@@ -88,7 +88,7 @@ export const Header = () => {
         <nav className="mx-auto flex w-full max-w-[min(1280px,94vw)] items-center justify-between gap-3 px-3 py-3 sm:gap-4 sm:px-4 sm:py-4">
           <Link href="#hero" className="flex items-center gap-2 sm:gap-3">
             <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={32} height={32} className="h-8 w-8 sm:h-10 sm:w-10" />
-            <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)] sm:text-sm">
+            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)] sm:text-base">
               BRUH Care
             </span>
           </Link>
@@ -105,7 +105,7 @@ export const Header = () => {
               </div>
             </button>
             {isMobileMenuOpen && (
-              <div className="absolute right-0 top-full mt-2 flex w-48 flex-col gap-2 rounded-2xl border border-[rgba(26,67,56,0.12)] bg-white/95 p-4 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-deep)] shadow-[0_18px_42px_rgba(26,67,56,0.12)] sm:mt-3 sm:w-56 sm:gap-3 sm:p-5">
+              <div className="absolute right-0 top-full mt-2 flex w-48 flex-col gap-2 rounded-2xl border border-[rgba(26,67,56,0.12)] bg-white/95 p-4 text-sm font-semibold uppercase tracking-[0.24em] text-[var(--color-deep)] shadow-[0_18px_42px_rgba(26,67,56,0.12)] sm:mt-3 sm:w-56 sm:gap-3 sm:p-5">
                 {navLinks.map((link) => (
                   <Link key={link.href} href={link.href} className="py-1 transition hover:text-[var(--color-primary)]" onClick={handleMobileLinkClick}>
                     {link.label}
@@ -136,11 +136,11 @@ export const Header = () => {
         >
           <Link href="#hero" className="flex items-center gap-2 sm:gap-3">
             <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={32} height={32} className="h-8 w-8 sm:h-10 sm:w-10" />
-            <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)] sm:text-sm">
+            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)] sm:text-base">
               BRUH Care
             </span>
           </Link>
-          <div className="hidden items-center gap-4 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--text-muted)] md:gap-6 md:text-sm lg:flex">
+          <div className="hidden items-center gap-4 text-sm font-semibold uppercase tracking-[0.22em] text-[var(--text-muted)] md:gap-6 md:text-base lg:flex">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className="transition hover:text-[var(--color-primary)]">
                 {link.label}
@@ -149,7 +149,7 @@ export const Header = () => {
           </div>
           <Link
             href="mailto:hello@bruhcenter.org"
-            className="rounded-full bg-[var(--color-primary)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-white shadow-[0_12px_28px_rgba(241,91,34,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(241,91,34,0.28)] md:px-5"
+            className="rounded-full bg-[var(--color-primary)] px-4 py-2 text-sm font-semibold uppercase tracking-[0.28em] text-white shadow-[0_12px_28px_rgba(241,91,34,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(241,91,34,0.28)] md:px-5"
           >
             Connect
           </Link>

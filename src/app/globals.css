@@ -53,7 +53,7 @@ body {
 /* Mobile-first responsive improvements */
 @media (max-width: 640px) {
   body {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5;
   }
   

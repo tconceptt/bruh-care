@@ -1,68 +1,195 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useRef } from "react";
 import { RayBurst, Reveal } from "@/components/ui";
 import { focusAreas } from "@/data";
-import type { FocusArea } from "@/types";
 
 export const Approach = () => {
-  const [activeFocus, setActiveFocus] = useState(focusAreas[0].id);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [currentX, setCurrentX] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-  const currentFocus = useMemo(
-    () => focusAreas.find((item) => item.id === activeFocus) ?? focusAreas[0],
-    [activeFocus]
-  );
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+    setCurrentX(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    setCurrentX(e.clientX);
+    const diff = currentX - startX;
+    setTranslateX(diff);
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    
+    const diff = currentX - startX;
+    const threshold = 100;
+    
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0 && activeIndex > 0) {
+        setActiveIndex(activeIndex - 1);
+      } else if (diff < 0 && activeIndex < focusAreas.length - 1) {
+        setActiveIndex(activeIndex + 1);
+      }
+    }
+    
+    setTranslateX(0);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    setStartX(e.touches[0].clientX);
+    setCurrentX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    setCurrentX(e.touches[0].clientX);
+    const diff = currentX - startX;
+    setTranslateX(diff);
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    
+    const diff = currentX - startX;
+    const threshold = 100;
+    
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0 && activeIndex > 0) {
+        setActiveIndex(activeIndex - 1);
+      } else if (diff < 0 && activeIndex < focusAreas.length - 1) {
+        setActiveIndex(activeIndex + 1);
+      }
+    }
+    
+    setTranslateX(0);
+  };
+
 
   return (
-    <section id="approach" className="grid gap-6 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-8">
+    <section id="approach" className="space-y-8">
+      {/* Header */}
       <Reveal className="space-y-4 sm:space-y-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
+        <p className="text-sm font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
           Our approach
         </p>
-        <h2 className="text-2xl font-semibold text-[var(--color-deep)] sm:text-3xl md:text-[2.5rem]">
+        <h2 className="text-3xl font-semibold text-[var(--color-deep)] sm:text-4xl md:text-[3rem]">
           Personalized pathways grounded in trust
         </h2>
-        <p className="text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">
+        <p className="text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
           Each focus area blends therapeutic expertise with the warmth of community. Explore how care plans evolve to meet the needs of each child and family.
         </p>
-        <div className="flex flex-wrap gap-2 sm:gap-3">
-          {focusAreas.map((item) => {
-            const isActive = item.id === activeFocus;
-            return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => setActiveFocus(item.id)}
-                className={`rounded-full px-3 py-2 text-xs font-semibold tracking-[0.12em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-primary)] sm:px-5 sm:text-sm ${
-                  isActive
-                    ? "bg-[var(--color-primary)] text-white shadow-[0_18px_38px_rgba(241,91,34,0.28)]"
-                    : "bg-white text-[var(--color-deep)] shadow-[0_12px_24px_rgba(26,67,56,0.05)] hover:bg-[rgba(254,190,41,0.12)]"
-                }`}
-              >
-                {item.title}
-              </button>
-            );
-          })}
-        </div>
       </Reveal>
-      <div className="relative overflow-hidden rounded-[30px] bg-white p-6 shadow-[0_24px_64px_rgba(26,67,56,0.08)] ring-1 ring-black/5 sm:p-8">
-        <Reveal>
-          <RayBurst tone="primary" size="md" className="-top-10 left-4 sm:left-10" />
-          <div className="relative space-y-4 sm:space-y-5">
-            <h3 className="text-xl font-semibold text-[var(--color-deep)] sm:text-2xl">
-              {currentFocus.title}
-            </h3>
-            <p className="text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">{currentFocus.summary}</p>
-            <ul className="space-y-2 text-sm leading-relaxed text-[var(--text-muted)] sm:space-y-3 sm:text-base">
-              {currentFocus.details.map((detail) => (
-                <li key={detail} className="flex gap-3 sm:gap-4">
-                  <span className="mt-1.5 h-1.5 w-4 flex-shrink-0 rounded-full bg-[var(--color-accent)] sm:mt-2 sm:h-2 sm:w-6" />
-                  <span>{detail}</span>
-                </li>
-              ))}
-            </ul>
+
+      {/* Carousel Container */}
+      <div className="relative">
+        {/* Progress Indicators */}
+        <div className="mb-6 flex justify-center gap-2">
+          {focusAreas.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              className={`h-2 w-8 rounded-full transition-all duration-300 ${
+                index === activeIndex
+                  ? "bg-[var(--color-primary)]"
+                  : "bg-gray-200 hover:bg-gray-300"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Cards Container */}
+        <div className="relative overflow-hidden">
+          <div
+            ref={carouselRef}
+            className="flex transition-transform duration-500 ease-out"
+            style={{
+              transform: `translateX(calc(-${activeIndex * 100}% + ${translateX}px))`,
+            }}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            {focusAreas.map((focus, index) => {
+              const isActive = index === activeIndex;
+              const isPrev = index === activeIndex - 1;
+              const isNext = index === activeIndex + 1;
+              
+              return (
+                <div
+                  key={focus.id}
+                  className={`w-full flex-shrink-0 px-4 transition-all duration-500 ${
+                    isActive ? "scale-100" : "scale-95"
+                  }`}
+                >
+                  <div
+                    className={`relative overflow-hidden rounded-[30px] bg-white p-6 shadow-[0_24px_64px_rgba(26,67,56,0.08)] ring-1 ring-black/5 sm:p-8 transition-all duration-500 ${
+                      isActive
+                        ? "opacity-100"
+                        : isPrev || isNext
+                        ? "opacity-60"
+                        : "opacity-40"
+                    }`}
+                  >
+                    <Reveal>
+                      <RayBurst tone="primary" size="md" className="-top-10 left-4 sm:left-10" />
+                      <div className="relative space-y-4 sm:space-y-5">
+                        <h3 className="text-2xl font-semibold text-[var(--color-deep)] sm:text-3xl">
+                          {focus.title}
+                        </h3>
+                        <p className="text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
+                          {focus.summary}
+                        </p>
+                        <ul className="space-y-2 text-base leading-relaxed text-[var(--text-muted)] sm:space-y-3 sm:text-lg">
+                          {focus.details.map((detail) => (
+                            <li key={detail} className="flex gap-3 sm:gap-4">
+                              <span className="mt-1.5 h-1.5 w-4 flex-shrink-0 rounded-full bg-[var(--color-accent)] sm:mt-2 sm:h-2 sm:w-6" />
+                              <span>{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </Reveal>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        </Reveal>
+        </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={() => setActiveIndex(Math.max(0, activeIndex - 1))}
+          disabled={activeIndex === 0}
+          className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition-all hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <svg className="h-5 w-5 text-[var(--color-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        
+        <button
+          onClick={() => setActiveIndex(Math.min(focusAreas.length - 1, activeIndex + 1))}
+          disabled={activeIndex === focusAreas.length - 1}
+          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition-all hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <svg className="h-5 w-5 text-[var(--color-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
       </div>
     </section>
   );

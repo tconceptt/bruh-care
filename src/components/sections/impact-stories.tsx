@@ -19,10 +19,10 @@ export const ImpactStories = () => {
       <RayBurst tone="accent" size="md" className="-top-8 left-6 sm:left-12" />
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-2 sm:space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
+          <p className="text-sm font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
             Families speak
           </p>
-          <h2 className="text-2xl font-semibold text-[var(--color-deep)] sm:text-3xl md:text-[2.4rem]">
+          <h2 className="text-3xl font-semibold text-[var(--color-deep)] sm:text-4xl md:text-[3rem]">
             Real progress, real relief
           </h2>
         </div>
@@ -69,16 +69,16 @@ export const ImpactStories = () => {
       </div>
       <div className="mt-6 grid gap-6 sm:mt-8 sm:gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
         <div className="space-y-3">
-          <span className="inline-flex items-center rounded-full bg-[rgba(77,190,158,0.18)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-[var(--color-deep)] sm:px-4">
+          <span className="inline-flex items-center rounded-full bg-[rgba(77,190,158,0.18)] px-3 py-1 text-sm font-semibold uppercase tracking-[0.32em] text-[var(--color-deep)] sm:px-4">
             {currentStory.child}
           </span>
-          <h3 className="text-xl font-semibold text-[var(--color-deep)] sm:text-2xl">
+          <h3 className="text-2xl font-semibold text-[var(--color-deep)] sm:text-3xl">
             {currentStory.headline}
           </h3>
-          <p className="text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">{currentStory.story}</p>
+          <p className="text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">{currentStory.story}</p>
         </div>
-        <div className="space-y-3 rounded-[26px] border border-[rgba(77,190,158,0.24)] bg-white p-4 text-xs leading-relaxed text-[var(--text-muted)] shadow-[0_16px_36px_rgba(26,67,56,0.06)] sm:space-y-4 sm:p-6 sm:text-sm">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)]">
+        <div className="space-y-3 rounded-[26px] border border-[rgba(77,190,158,0.24)] bg-white p-4 text-sm leading-relaxed text-[var(--text-muted)] shadow-[0_16px_36px_rgba(26,67,56,0.06)] sm:space-y-4 sm:p-6 sm:text-base">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)]">
             What progress looks like
           </p>
           <ul className="space-y-2 sm:space-y-3">
