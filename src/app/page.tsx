@@ -68,7 +68,7 @@ const transformMap: Record<string, string> = {
   scale: "scale(0.95)",
 };
 
-const Reveal = <T extends keyof JSX.IntrinsicElements = "div">({
+const Reveal = <T extends keyof React.JSX.IntrinsicElements = "div">({
   as,
   children,
   className = "",
@@ -81,7 +81,7 @@ const Reveal = <T extends keyof JSX.IntrinsicElements = "div">({
   className?: string;
   delay?: number;
   direction?: keyof typeof transformMap;
-} & Omit<JSX.IntrinsicElements[T], "ref" | "children">) => {
+} & Omit<React.JSX.IntrinsicElements[T], "ref" | "children">) => {
   const Component = (as ?? "div") as React.ElementType;
   const innerRef = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
@@ -283,6 +283,15 @@ const stats = [
   },
 ];
 
+const navLinks = [
+  { href: "#hero", label: "Home" },
+  { href: "#mission", label: "Mission" },
+  { href: "#approach", label: "Our Approach" },
+  { href: "#day", label: "Daily Life" },
+  { href: "#stories", label: "Stories" },
+  { href: "#support", label: "Support" },
+];
+
 export default function Home() {
   const [activeFocus, setActiveFocus] = useState(focusAreas[0].id);
   const [storyIndex, setStoryIndex] = useState(0);
@@ -308,8 +317,51 @@ export default function Home() {
         aria-hidden
         className="pointer-events-none absolute -right-36 top-[1200px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,_rgba(241,91,34,0.12),_transparent_70%)]"
       />
-      <main className="relative mx-auto flex max-w-[min(1280px,94vw)] flex-col gap-24 px-4 pb-24 pt-12 sm:px-8 lg:px-12">
-        <section className="relative grid gap-10 overflow-hidden rounded-[28px] bg-transparent px-0 pb-10 pt-6 sm:grid-cols-[minmax(0,1fr)_360px]">
+      <header className="sticky top-0 z-50 bg-[rgba(253,251,246,0.9)] backdrop-blur-md transition-shadow">
+        <nav className="mx-auto flex max-w-[min(1280px,94vw)] items-center justify-between gap-4 px-4 py-4 sm:px-8 lg:px-12">
+          <Link href="#hero" className="flex items-center gap-3">
+            <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={40} height={40} className="h-10 w-10" />
+            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)]">
+              BRUH Care
+            </span>
+          </Link>
+          <div className="hidden items-center gap-6 text-sm font-semibold uppercase tracking-[0.22em] text-[var(--text-muted)] lg:flex">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="transition hover:text-[var(--color-primary)]">
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <Link
+            href="mailto:hello@bruhcenter.org"
+            className="hidden rounded-full bg-[var(--color-primary)] px-5 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-white shadow-[0_12px_28px_rgba(241,91,34,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(241,91,34,0.28)] lg:inline-flex"
+          >
+            Connect
+          </Link>
+          <details className="relative lg:hidden">
+            <summary className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[rgba(26,67,56,0.12)] bg-white shadow-[0_10px_24px_rgba(26,67,56,0.08)]">
+              <span className="sr-only">Toggle navigation</span>
+              <div className="space-y-[6px]">
+                <span className="block h-[2px] w-5 rounded-full bg-[var(--color-deep)]" />
+                <span className="block h-[2px] w-5 rounded-full bg-[var(--color-deep)]" />
+                <span className="block h-[2px] w-5 rounded-full bg-[var(--color-deep)]" />
+              </div>
+            </summary>
+            <div className="absolute right-0 mt-3 flex w-56 flex-col gap-3 rounded-2xl border border-[rgba(26,67,56,0.12)] bg-white/95 p-5 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-deep)] shadow-[0_18px_42px_rgba(26,67,56,0.12)]">
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="py-1 transition hover:text-[var(--color-primary)]">
+                  {link.label}
+                </Link>
+              ))}
+              <Link href="mailto:hello@bruhcenter.org" className="mt-2 inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-4 py-2 text-white">
+                Connect
+              </Link>
+            </div>
+          </details>
+        </nav>
+      </header>
+      <main className="relative mx-auto flex max-w-[min(1280px,94vw)] flex-col gap-24 px-4 pb-24 pt-16 sm:px-8 lg:px-12">
+        <section id="hero" className="relative grid gap-10 overflow-hidden rounded-[28px] bg-transparent px-0 pb-10 pt-6 sm:grid-cols-[minmax(0,1fr)_360px]">
           <div className="absolute inset-0 -z-10 rounded-[28px] bg-white/92 shadow-[0_24px_68px_rgba(26,67,56,0.07)] backdrop-blur" />
           <RayBurst tone="secondary" size="lg" className="-top-6 left-8" />
           <RayBurst tone="accent" size="md" className="-right-2 top-2 opacity-80" />
@@ -420,7 +472,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:items-center">
+        <section id="approach" className="grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:items-center">
           <Reveal className="space-y-6">
             <p className="text-xs font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
               Our approach
@@ -473,6 +525,7 @@ export default function Home() {
         </section>
 
         <Reveal
+          id="day"
           as="section"
           direction="up"
           className="relative overflow-hidden rounded-[32px] bg-white px-8 py-12 shadow-[0_26px_68px_rgba(26,67,56,0.08)] ring-1 ring-black/5"
@@ -520,7 +573,7 @@ export default function Home() {
           </div>
         </Reveal>
 
-        <section className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+        <section id="stories" className="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center">
           <Reveal className="space-y-6">
             <p className="text-xs font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
               Founder’s story
@@ -554,7 +607,9 @@ export default function Home() {
         </section>
 
         <Reveal
+          id="support"
           as="section"
+          direction="up"
           className="relative overflow-hidden rounded-[32px] bg-white/95 px-8 py-12 shadow-[0_26px_68px_rgba(26,67,56,0.08)] ring-1 ring-black/5"
         >
           <RayBurst tone="accent" size="md" className="-top-8 left-12" />
@@ -613,6 +668,7 @@ export default function Home() {
         </Reveal>
 
         <Reveal
+          id="support"
           as="section"
           direction="up"
           className="relative overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,_rgba(254,190,41,0.25),_rgba(77,190,158,0.3))] px-10 py-12 text-[var(--color-deep)] shadow-[0_28px_72px_rgba(26,67,56,0.12)]"
@@ -651,18 +707,51 @@ export default function Home() {
           as="footer"
           className="flex flex-col gap-4 border-t border-[rgba(26,67,56,0.08)] pt-8 text-sm text-[var(--text-muted)]"
         >
-          <p className="font-semibold text-[var(--color-deep)]">BRUH Care and Learning Center • Addis Ababa, Ethiopia</p>
-          <p>
-            Families describe BRUH as safe, welcoming, trustworthy, and patient. We are honored to walk with children who deserve to be seen as capable, worthy, and loved.
-          </p>
-          <div className="flex flex-wrap gap-4 text-sm text-[var(--color-deep)]">
-            <Link href="mailto:hello@bruhcenter.org" className="underline-offset-4 hover:underline">
-              hello@bruhcenter.org
-            </Link>
-            <Link href="tel:+251911000000" className="underline-offset-4 hover:underline">
-              +251 911 000 000
-            </Link>
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+            <div className="max-w-sm space-y-3">
+              <div className="flex items-center gap-3">
+                <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={36} height={36} className="h-9 w-9" />
+                <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-deep)]">
+                  BRUH Care
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed">
+                BRUH Care and Learning Center provides holistic education, therapy, and advocacy so children with intellectual disabilities—and their families—can flourish with dignity.
+              </p>
+            </div>
+            <div className="grid gap-6 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)] sm:grid-cols-2 lg:grid-cols-3">
+              <div className="space-y-3">
+                <p className="text-[var(--color-primary)]">Explore</p>
+                {navLinks.map((link) => (
+                  <Link key={`footer-${link.href}`} href={link.href} className="block text-[var(--text-muted)] transition hover:text-[var(--color-primary)]">
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="space-y-3">
+                <p className="text-[var(--color-primary)]">Connect</p>
+                <Link href="mailto:hello@bruhcenter.org" className="block text-[var(--text-muted)] transition hover:text-[var(--color-primary)]">
+                  hello@bruhcenter.org
+                </Link>
+                <Link href="tel:+251911000000" className="block text-[var(--text-muted)] transition hover:text-[var(--color-primary)]">
+                  +251 911 000 000
+                </Link>
+                <p className="text-[var(--text-muted)]">Addis Ababa, Ethiopia</p>
+              </div>
+              <div className="space-y-3">
+                <p className="text-[var(--color-primary)]">Support</p>
+                <Link href="mailto:partner@bruhcenter.org" className="block text-[var(--text-muted)] transition hover:text-[var(--color-primary)]">
+                  Partnerships
+                </Link>
+                <Link href="mailto:visit@bruhcenter.org" className="block text-[var(--text-muted)] transition hover:text-[var(--color-primary)]">
+                  Schedule a visit
+                </Link>
+              </div>
+            </div>
           </div>
+          <p className="text-xs uppercase tracking-[0.28em] text-[var(--text-muted)]">
+            © {new Date().getFullYear()} BRUH Care and Learning Center. All rights reserved.
+          </p>
         </Reveal>
       </main>
     </div>
