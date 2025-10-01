@@ -4,15 +4,11 @@ import { dailyRhythms } from "@/data";
 
 export const DailyLife = () => {
   return (
-    <Reveal
-      id="day"
-      as="section"
-      direction="up"
-      className="relative overflow-hidden rounded-[32px] bg-white px-4 py-8 shadow-[0_26px_68px_rgba(26,67,56,0.08)] ring-1 ring-black/5 sm:px-8 sm:py-12"
-    >
+    <div id="day" className="relative overflow-hidden rounded-[32px] bg-white p-6 shadow-[0_26px_68px_rgba(26,67,56,0.08)] ring-1 ring-black/5 sm:p-8">
+      <Reveal direction="up">
       <RayBurst tone="secondary" size="md" className="-left-4 top-6 sm:-left-6 sm:top-10" />
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div className="space-y-2 sm:space-y-3">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="space-y-3 sm:space-y-4">
           <p className="text-sm font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
             A day at BRUH
           </p>
@@ -27,11 +23,11 @@ export const DailyLife = () => {
           Schedule a visit
         </Link>
       </div>
-      <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-6 lg:grid-cols-3">
+        <div className="mt-6 grid gap-6 sm:mt-8 lg:grid-cols-3">
         {dailyRhythms.map((moment) => (
           <div
             key={moment.title}
-            className="space-y-3 rounded-[24px] border border-[rgba(26,67,56,0.08)] bg-white px-4 py-5 shadow-[0_16px_36px_rgba(26,67,56,0.06)] sm:space-y-4 sm:px-6 sm:py-7"
+            className="space-y-4 rounded-[24px] border border-[rgba(26,67,56,0.08)] bg-white p-6 shadow-[0_16px_36px_rgba(26,67,56,0.06)] sm:space-y-6 sm:p-8"
           >
             <p className="text-sm font-semibold uppercase tracking-[0.34em] text-[var(--color-secondary)]">
               {moment.time}
@@ -40,9 +36,9 @@ export const DailyLife = () => {
               {moment.title}
             </h3>
             <p className="text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">{moment.description}</p>
-            <ul className="space-y-1.5 text-sm leading-relaxed text-[var(--text-muted)] sm:space-y-2 sm:text-base">
+            <ul className="space-y-3 text-sm leading-relaxed text-[var(--text-muted)] sm:space-y-4 sm:text-base">
               {moment.highlights.map((highlight) => (
-                <li key={highlight} className="flex gap-2 sm:gap-3">
+                <li key={highlight} className="flex gap-4">
                   <span className="mt-1 h-1 w-5 flex-shrink-0 rounded-full bg-[var(--color-primary)]/70 sm:mt-1.5 sm:h-1.5 sm:w-7" />
                   <span>{highlight}</span>
                 </li>
@@ -50,7 +46,8 @@ export const DailyLife = () => {
             </ul>
           </div>
         ))}
-      </div>
-    </Reveal>
+        </div>
+      </Reveal>
+    </div>
   );
 };

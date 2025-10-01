@@ -2,7 +2,7 @@ import { RayBurst, Reveal } from "@/components/ui";
 
 export const FounderStory = () => {
   return (
-    <section id="stories" className="grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-8">
+    <div id="stories" className="grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-8">
       <Reveal className="space-y-4 sm:space-y-6">
         <p className="text-sm font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
           Founder&apos;s story
@@ -18,12 +18,12 @@ export const FounderStory = () => {
         </p>
       </Reveal>
       <Reveal
-        className="relative overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,_rgba(254,190,41,0.32),_rgba(77,190,158,0.32))] p-6 text-[var(--color-deep)] shadow-[0_28px_72px_rgba(26,67,56,0.13)] sm:p-9"
+        className="relative overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,_rgba(254,190,41,0.32),_rgba(77,190,158,0.32))] p-6 text-[var(--color-deep)] shadow-[0_28px_72px_rgba(26,67,56,0.13)] sm:p-8"
         direction="left"
         delay={120}
       >
         <RayBurst tone="primary" size="md" className="-right-4 top-6" />
-        <div className="space-y-3 sm:space-y-4">
+        <div className="space-y-4 sm:space-y-6">
           <p className="text-sm font-semibold uppercase tracking-[0.34em] text-[var(--color-primary)]/80">
             Words from Nardos
           </p>
@@ -33,6 +33,6 @@ export const FounderStory = () => {
           <p className="text-sm text-[var(--color-deep)]/70 sm:text-base">— Ms. Nardos Assefa, Founder & Director</p>
         </div>
       </Reveal>
-    </section>
+    </div>
   );
 };

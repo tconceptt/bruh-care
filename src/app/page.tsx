@@ -11,6 +11,7 @@ import {
   Support, 
   Footer 
 } from "@/components";
+import { Section, Container } from "@/components/ui";
 
 export default function Home() {
   return (
@@ -31,15 +32,57 @@ export default function Home() {
       
       <Header />
       
-      <main className="relative mx-auto flex max-w-[min(1280px,94vw)] flex-col gap-12 px-3 pb-16 pt-12 sm:gap-16 sm:px-4 sm:pb-20 sm:pt-16 md:gap-20 lg:gap-24 lg:px-8 xl:px-12">
-        <Hero />
-        <Mission />
-        <Approach />
-        <DailyLife />
-        <FounderStory />
-        <ImpactStories />
-        <Support />
-        <Footer />
+      {/* Header spacer to prevent content from sitting under fixed header */}
+      <div className="h-16 lg:h-20" />
+      
+      <main className="relative">
+        <Section>
+          <Container>
+            <Hero />
+          </Container>
+        </Section>
+        
+        <Section>
+          <Container>
+            <Mission />
+          </Container>
+        </Section>
+        
+        <Section>
+          <Container>
+            <Approach />
+          </Container>
+        </Section>
+        
+        <Section>
+          <Container>
+            <DailyLife />
+          </Container>
+        </Section>
+        
+        <Section>
+          <Container>
+            <FounderStory />
+          </Container>
+        </Section>
+        
+        <Section>
+          <Container>
+            <ImpactStories />
+          </Container>
+        </Section>
+        
+        <Section>
+          <Container>
+            <Support />
+          </Container>
+        </Section>
+        
+        <Section>
+          <Container>
+            <Footer />
+          </Container>
+        </Section>
       </main>
     </div>
   );

@@ -76,13 +76,13 @@ export const Approach = () => {
 
 
   return (
-    <section id="approach" className="space-y-8">
+    <div id="approach" className="space-y-6 sm:space-y-8">
       {/* Header */}
       <Reveal className="space-y-4 sm:space-y-6">
         <p className="text-sm font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
           Our approach
         </p>
-        <h2 className="text-3xl font-semibold text-[var(--color-deep)] sm:text-4xl md:text-[3rem]">
+        <h2 className="text-3xl font-semibold text-[var(--color-deep)] sm:text-4xl md:text-[3rem] scroll-mt-16 lg:scroll-mt-20">
           Personalized pathways grounded in trust
         </h2>
         <p className="text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
@@ -146,16 +146,16 @@ export const Approach = () => {
                   >
                     <Reveal>
                       <RayBurst tone="primary" size="md" className="-top-10 left-4 sm:left-10" />
-                      <div className="relative space-y-4 sm:space-y-5">
+                      <div className="relative space-y-4 sm:space-y-6">
                         <h3 className="text-2xl font-semibold text-[var(--color-deep)] sm:text-3xl">
                           {focus.title}
                         </h3>
                         <p className="text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
                           {focus.summary}
                         </p>
-                        <ul className="space-y-2 text-base leading-relaxed text-[var(--text-muted)] sm:space-y-3 sm:text-lg">
+                        <ul className="space-y-3 text-base leading-relaxed text-[var(--text-muted)] sm:space-y-4 sm:text-lg">
                           {focus.details.map((detail) => (
-                            <li key={detail} className="flex gap-3 sm:gap-4">
+                            <li key={detail} className="flex gap-4">
                               <span className="mt-1.5 h-1.5 w-4 flex-shrink-0 rounded-full bg-[var(--color-accent)] sm:mt-2 sm:h-2 sm:w-6" />
                               <span>{detail}</span>
                             </li>
@@ -191,6 +191,6 @@ export const Approach = () => {
           </svg>
         </button>
       </div>
-    </section>
+    </div>
   );
 };
