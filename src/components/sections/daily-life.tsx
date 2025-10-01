@@ -1,0 +1,56 @@
+import Link from "next/link";
+import { RayBurst, Reveal } from "@/components/ui";
+import { dailyRhythms } from "@/data";
+
+export const DailyLife = () => {
+  return (
+    <Reveal
+      id="day"
+      as="section"
+      direction="up"
+      className="relative overflow-hidden rounded-[32px] bg-white px-4 py-8 shadow-[0_26px_68px_rgba(26,67,56,0.08)] ring-1 ring-black/5 sm:px-8 sm:py-12"
+    >
+      <RayBurst tone="secondary" size="md" className="-left-4 top-6 sm:-left-6 sm:top-10" />
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="space-y-2 sm:space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
+            A day at BRUH
+          </p>
+          <h2 className="text-2xl font-semibold text-[var(--color-deep)] sm:text-3xl md:text-[2.4rem]">
+            Rhythms that build safety and growth
+          </h2>
+        </div>
+        <Link
+          href="mailto:visit@bruhcenter.org"
+          className="inline-flex items-center justify-center rounded-full border border-[var(--color-accent)]/70 bg-[rgba(77,190,158,0.15)] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-deep)] shadow-[0_12px_28px_rgba(77,190,158,0.22)] transition hover:bg-[rgba(77,190,158,0.25)] sm:px-6 sm:text-sm"
+        >
+          Schedule a visit
+        </Link>
+      </div>
+      <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-6 lg:grid-cols-3">
+        {dailyRhythms.map((moment) => (
+          <div
+            key={moment.title}
+            className="space-y-3 rounded-[24px] border border-[rgba(26,67,56,0.08)] bg-white px-4 py-5 shadow-[0_16px_36px_rgba(26,67,56,0.06)] sm:space-y-4 sm:px-6 sm:py-7"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[var(--color-secondary)]">
+              {moment.time}
+            </p>
+            <h3 className="text-base font-semibold text-[var(--color-deep)] sm:text-lg">
+              {moment.title}
+            </h3>
+            <p className="text-xs leading-relaxed text-[var(--text-muted)] sm:text-sm">{moment.description}</p>
+            <ul className="space-y-1.5 text-xs leading-relaxed text-[var(--text-muted)] sm:space-y-2 sm:text-sm">
+              {moment.highlights.map((highlight) => (
+                <li key={highlight} className="flex gap-2 sm:gap-3">
+                  <span className="mt-1 h-1 w-5 flex-shrink-0 rounded-full bg-[var(--color-primary)]/70 sm:mt-1.5 sm:h-1.5 sm:w-7" />
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </Reveal>
+  );
+};

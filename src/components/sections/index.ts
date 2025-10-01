@@ -1,0 +1,9 @@
+export { Header } from './header';
+export { Hero } from './hero';
+export { Mission } from './mission';
+export { Approach } from './approach';
+export { DailyLife } from './daily-life';
+export { FounderStory } from './founder-story';
+export { ImpactStories } from './impact-stories';
+export { Support } from './support';
+export { Footer } from './footer';
