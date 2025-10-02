@@ -8,7 +8,7 @@ interface ParallaxLayersProps {
   className?: string;
   speed?: number;
   direction?: "up" | "down" | "left" | "right";
-  offset?: [string, string];
+  offset?: ["start end", "end start"];
 }
 
 export const ParallaxLayers = ({ 

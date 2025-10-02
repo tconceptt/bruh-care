@@ -10,7 +10,7 @@ interface ScrollRevealProps {
   distance?: number;
   duration?: number;
   delay?: number;
-  offset?: [string, string];
+  offset?: ["start end", "end start"];
 }
 
 export const ScrollReveal = ({ 

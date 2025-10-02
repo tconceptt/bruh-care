@@ -59,7 +59,6 @@ const CommunitySlide = ({ segment, index }: { segment: (typeof communityImages)[
             src={segment.image}
             alt={segment.alt}
             priority={index === 0}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
             zoomRange={[1.1, 1, 0.95]}
             offset={["start end", "end start"]}
             className="h-full w-full"

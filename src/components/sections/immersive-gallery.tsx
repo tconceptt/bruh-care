@@ -67,7 +67,6 @@ const ImmersiveSlide = ({ segment, index }: { segment: (typeof immersiveImages)[
             src={segment.image}
             alt={segment.alt}
             priority={index === 0}
-            sizes="100vw"
             zoomRange={[1.2, 1, 0.95]}
             offset={["start end", "end start"]}
             className="h-full w-full"

@@ -9,10 +9,8 @@ interface ImageRevealProps {
   alt: string;
   className?: string;
   priority?: boolean;
-  sizes?: string;
   zoomRange?: [number, number, number];
-  offset?: [string, string];
-  maskDirection?: "left" | "right" | "up" | "down";
+  offset?: ["start end", "end start"];
 }
 
 export const ImageReveal = ({ 
@@ -20,10 +18,8 @@ export const ImageReveal = ({
   alt,
   className = "",
   priority = false,
-  sizes = "100vw",
   zoomRange = [1.1, 1, 0.9],
-  offset = ["start end", "end start"],
-  maskDirection = "left"
+  offset = ["start end", "end start"]
 }: ImageRevealProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({

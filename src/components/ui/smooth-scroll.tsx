@@ -20,9 +20,6 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
       wheelMultiplier: isMobile ? 0.8 : 1, // Reduce wheel sensitivity on mobile
       touchMultiplier: isMobile ? 1.5 : 2, // Reduce touch sensitivity on mobile
       infinite: false,
-      // Mobile-specific optimizations
-      touchInertiaMultiplier: isMobile ? 25 : 35,
-      syncTouch: isMobile, // Sync touch events on mobile
     });
 
     function raf(time: number) {

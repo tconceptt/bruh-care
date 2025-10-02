@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useScroll, useTransform, MotionValue } from "framer-motion";
+import { useRef } from "react";
+import { useScroll, useTransform, MotionValue, motion } from "framer-motion";
 
 interface ScrollZoomProps {
   children: React.ReactNode;
   className?: string;
   zoomRange?: [number, number];
-  offset?: [string, string];
+  offset?: ["start end", "end start"];
   scale?: MotionValue<number>;
 }
 
@@ -24,13 +24,15 @@ export const ScrollZoom = ({
     offset,
   });
 
-  const scale = externalScale || useTransform(scrollYProgress, [0, 1], zoomRange);
+  // Always call useTransform hook, then conditionally use external scale
+  const internalScale = useTransform(scrollYProgress, [0, 1], zoomRange);
+  const scale = externalScale || internalScale;
 
   return (
     <div ref={containerRef} className={className}>
-      <div style={{ scale }}>
+      <motion.div style={{ scale }}>
         {children}
-      </div>
+      </motion.div>
     </div>
   );
 };
