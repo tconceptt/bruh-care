@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface FloatingAnimationProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ export const FloatingAnimation = ({
   speed = 2
 }: FloatingAnimationProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [animationId, setAnimationId] = useState<number | null>(null);
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     const element = ref.current;
@@ -34,19 +34,17 @@ export const FloatingAnimation = ({
       
       element.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       
-      const id = requestAnimationFrame(animate);
-      setAnimationId(id);
+      animationRef.current = requestAnimationFrame(animate);
     };
 
-    const id = requestAnimationFrame(animate);
-    setAnimationId(id);
+    animationRef.current = requestAnimationFrame(animate);
 
     return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [intensity, speed, animationId]);
+  }, [intensity, speed]);
 
   return (
     <div ref={ref} className={className}>

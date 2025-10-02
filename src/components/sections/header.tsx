@@ -86,11 +86,8 @@ export const Header = () => {
       {/* Mobile: Always visible full header */}
       <header className={`lg:hidden fixed inset-x-0 top-0 z-50 flex justify-center ${transitionClass} ${chromeClass}`}>
         <nav className="mx-auto flex w-full max-w-[min(1280px,94vw)] items-center justify-between gap-3 px-3 py-3 sm:gap-4 sm:px-4 sm:py-4">
-          <Link href="#hero" className="flex items-center gap-2 sm:gap-3">
-            <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={32} height={32} className="h-8 w-8 sm:h-10 sm:w-10" />
-            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)] sm:text-base">
-              BRUH Care
-            </span>
+          <Link href="#hero" className="flex items-center">
+            <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={64} height={64} className="h-16 w-16 sm:h-20 sm:w-20" />
           </Link>
           <div ref={mobileMenuRef} className="relative">
             <button
@@ -134,11 +131,8 @@ export const Header = () => {
               : "lg:bg-white/30 lg:border lg:border-white/20 lg:shadow-[0_8px_24px_rgba(26,67,56,0.06)] lg:backdrop-blur-sm"
           }`}
         >
-          <Link href="#hero" className="flex items-center gap-2 sm:gap-3 lg:gap-5">
-            <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={56} height={56} className="h-8 w-8 sm:h-10 sm:w-10 lg:h-14 lg:w-14" />
-            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)] sm:text-base lg:text-xl">
-              BRUH Care
-            </span>
+          <Link href="#hero" className="flex items-center">
+            <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={80} height={80} className="h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24" />
           </Link>
           <div className="hidden items-center gap-4 text-sm font-semibold uppercase tracking-[0.22em] text-[var(--text-muted)] md:gap-6 md:text-base lg:flex">
             {navLinks.map((link) => (

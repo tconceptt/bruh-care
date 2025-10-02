@@ -16,7 +16,6 @@ export const Parallax = ({ children, speed = 0.5, className = "" }: ParallaxProp
     if (!element) return;
 
     const updateParallax = () => {
-      const rect = element.getBoundingClientRect();
       const scrolled = window.pageYOffset;
       const rate = scrolled * -speed;
       

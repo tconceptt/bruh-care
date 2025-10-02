@@ -55,7 +55,7 @@ export const Reveal = <T extends keyof React.JSX.IntrinsicElements = "div">({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [threshold]);
 
   const transform = transformMap[direction] ?? transformMap.up;
 

@@ -17,7 +17,6 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
       smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 2,
-      normalizeWheel: true,
       infinite: false,
     });
 
