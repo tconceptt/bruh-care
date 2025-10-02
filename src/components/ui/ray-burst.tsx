@@ -1,6 +1,6 @@
 interface RayBurstProps {
   tone?: "primary" | "secondary" | "accent";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   className?: string;
 }
 
@@ -14,6 +14,7 @@ const lengthMap: Record<NonNullable<RayBurstProps["size"]>, number> = {
   sm: 52,
   md: 74,
   lg: 96,
+  xl: 128,
 };
 
 export const RayBurst = ({
@@ -28,7 +29,7 @@ export const RayBurst = ({
   return (
     <div
       className={`ray-burst pointer-events-none relative flex items-end justify-center ${
-        size === "lg" ? "h-28 w-28" : size === "md" ? "h-20 w-20" : "h-14 w-14"
+        size === "xl" ? "h-40 w-40" : size === "lg" ? "h-28 w-28" : size === "md" ? "h-20 w-20" : "h-14 w-14"
       } ${className}`}
     >
       {angles.map((angle, index) => (

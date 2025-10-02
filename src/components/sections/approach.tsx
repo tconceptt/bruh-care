@@ -92,19 +92,42 @@ export const Approach = () => {
 
       {/* Carousel Container */}
       <div className="relative">
-        {/* Progress Indicators */}
-        <div className="mb-6 flex justify-center gap-2">
-          {focusAreas.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`h-2 w-8 rounded-full transition-all duration-300 ${
-                index === activeIndex
-                  ? "bg-[var(--color-primary)]"
-                  : "bg-gray-200 hover:bg-gray-300"
-              }`}
-            />
-          ))}
+        {/* Navigation Arrows - Positioned at the top */}
+        <div className="mb-6 flex justify-between items-center">
+          <button
+            onClick={() => setActiveIndex(Math.max(0, activeIndex - 1))}
+            disabled={activeIndex === 0}
+            className="rounded-full bg-white/90 p-3 shadow-lg transition-all hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <svg className="h-5 w-5 text-[var(--color-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          {/* Progress Indicators */}
+          <div className="flex justify-center gap-2">
+            {focusAreas.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`h-2 w-8 rounded-full transition-all duration-300 ${
+                  index === activeIndex
+                    ? "bg-[var(--color-primary)]"
+                    : "bg-gray-200 hover:bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
+          
+          <button
+            onClick={() => setActiveIndex(Math.min(focusAreas.length - 1, activeIndex + 1))}
+            disabled={activeIndex === focusAreas.length - 1}
+            className="rounded-full bg-white/90 p-3 shadow-lg transition-all hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <svg className="h-5 w-5 text-[var(--color-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
         </div>
 
         {/* Cards Container */}
@@ -170,26 +193,6 @@ export const Approach = () => {
           </div>
         </div>
 
-        {/* Navigation Arrows */}
-        <button
-          onClick={() => setActiveIndex(Math.max(0, activeIndex - 1))}
-          disabled={activeIndex === 0}
-          className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition-all hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <svg className="h-5 w-5 text-[var(--color-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        
-        <button
-          onClick={() => setActiveIndex(Math.min(focusAreas.length - 1, activeIndex + 1))}
-          disabled={activeIndex === focusAreas.length - 1}
-          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-3 shadow-lg transition-all hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <svg className="h-5 w-5 text-[var(--color-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
       </div>
     </div>
   );

@@ -134,9 +134,9 @@ export const Header = () => {
               : "lg:bg-white/30 lg:border lg:border-white/20 lg:shadow-[0_8px_24px_rgba(26,67,56,0.06)] lg:backdrop-blur-sm"
           }`}
         >
-          <Link href="#hero" className="flex items-center gap-2 sm:gap-3">
-            <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={32} height={32} className="h-8 w-8 sm:h-10 sm:w-10" />
-            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)] sm:text-base">
+          <Link href="#hero" className="flex items-center gap-2 sm:gap-3 lg:gap-5">
+            <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={56} height={56} className="h-8 w-8 sm:h-10 sm:w-10 lg:h-14 lg:w-14" />
+            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-deep)] sm:text-base lg:text-xl">
               BRUH Care
             </span>
           </Link>

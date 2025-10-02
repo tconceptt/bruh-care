@@ -4,9 +4,12 @@ import { dailyRhythms } from "@/data";
 
 export const DailyLife = () => {
   return (
-    <div id="day" className="relative overflow-hidden rounded-[32px] bg-white p-6 shadow-[0_26px_68px_rgba(26,67,56,0.08)] ring-1 ring-black/5 sm:p-8">
-      <Reveal direction="up">
-      <RayBurst tone="secondary" size="md" className="-left-4 top-6 sm:-left-6 sm:top-10" />
+    <div id="day" className="relative overflow-hidden rounded-[32px] bg-white shadow-[0_26px_68px_rgba(26,67,56,0.08)] ring-1 ring-black/5">
+      {/* RayBurst positioned in background with proper z-index */}
+      <RayBurst tone="secondary" size="xl" className="absolute -left-12 top-0 z-0 opacity-90 sm:-left-16 sm:top-2" />
+      {/* Content with padding to reserve space for RayBurst */}
+      <div className="relative z-10 p-6 pt-16 pl-8 sm:p-8 sm:pt-20 sm:pl-12">
+        <Reveal direction="up">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="space-y-3 sm:space-y-4">
           <p className="text-sm font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
@@ -47,7 +50,8 @@ export const DailyLife = () => {
           </div>
         ))}
         </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </div>
   );
 };

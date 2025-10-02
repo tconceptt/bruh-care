@@ -4,8 +4,11 @@ import { values } from "@/data";
 export const Mission = () => {
   return (
     <div id="mission" className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-start lg:gap-8">
-      <Reveal className="relative overflow-hidden rounded-[30px] bg-white/95 p-6 shadow-[0_20px_56px_rgba(26,67,56,0.08)] ring-1 ring-black/5 sm:p-8">
-        <RayBurst tone="accent" size="md" className="-top-8 right-4 sm:right-8" />
+      <Reveal className="relative overflow-hidden rounded-[30px] bg-white/95 shadow-[0_20px_56px_rgba(26,67,56,0.08)] ring-1 ring-black/5">
+        {/* RayBurst positioned in background with proper z-index */}
+        <RayBurst tone="accent" size="md" className="absolute -top-8 right-4 -z-10 sm:right-8" />
+        {/* Content with padding to reserve space for RayBurst */}
+        <div className="relative z-10 p-6 pt-16 pr-16 sm:p-8 sm:pt-20 sm:pr-20">
         <div className="space-y-4 sm:space-y-6">
           <p className="text-sm font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
             Why it matters
@@ -26,6 +29,7 @@ export const Mission = () => {
               <p className="text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">{value.description}</p>
             </div>
           ))}
+        </div>
         </div>
       </Reveal>
       <Reveal className="space-y-4 sm:space-y-6 rounded-[30px] bg-[linear-gradient(145deg,_rgba(254,190,41,0.18),_rgba(77,190,158,0.2))] p-6 shadow-[0_22px_56px_rgba(26,67,56,0.08)] ring-1 ring-[rgba(26,67,56,0.06)] sm:p-8" delay={120} direction="left">

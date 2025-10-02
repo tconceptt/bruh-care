@@ -18,11 +18,14 @@ export const FounderStory = () => {
         </p>
       </Reveal>
       <Reveal
-        className="relative overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,_rgba(254,190,41,0.32),_rgba(77,190,158,0.32))] p-6 text-[var(--color-deep)] shadow-[0_28px_72px_rgba(26,67,56,0.13)] sm:p-8"
+        className="relative overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,_rgba(254,190,41,0.32),_rgba(77,190,158,0.32))] text-[var(--color-deep)] shadow-[0_28px_72px_rgba(26,67,56,0.13)]"
         direction="left"
         delay={120}
       >
-        <RayBurst tone="primary" size="md" className="-right-4 top-6" />
+        {/* RayBurst positioned in background with proper z-index */}
+        <RayBurst tone="primary" size="md" className="absolute -right-4 top-6 -z-10" />
+        {/* Content with padding to reserve space for RayBurst */}
+        <div className="relative z-10 p-6 pt-16 pr-16 sm:p-8 sm:pt-20 sm:pr-20">
         <div className="space-y-4 sm:space-y-6">
           <p className="text-sm font-semibold uppercase tracking-[0.34em] text-[var(--color-primary)]/80">
             Words from Nardos
@@ -31,6 +34,7 @@ export const FounderStory = () => {
             &ldquo;I promised the children and mothers who trusted us that they would never again be turned away. BRUH is that promise in action—steady, compassionate, and determined.&rdquo;
           </p>
           <p className="text-sm text-[var(--color-deep)]/70 sm:text-base">— Ms. Nardos Assefa, Founder & Director</p>
+        </div>
         </div>
       </Reveal>
     </div>

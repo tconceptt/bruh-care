@@ -3,9 +3,12 @@ import { RayBurst, Reveal } from "@/components/ui";
 
 export const Support = () => {
   return (
-    <div id="support" className="relative overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,_rgba(254,190,41,0.25),_rgba(77,190,158,0.3))] p-6 text-[var(--color-deep)] shadow-[0_28px_72px_rgba(26,67,56,0.12)] sm:p-8">
-      <Reveal direction="up">
-      <RayBurst tone="secondary" size="lg" className="-left-6 top-4 sm:-left-10 sm:top-6" />
+    <div id="support" className="relative overflow-hidden rounded-[32px] bg-[linear-gradient(135deg,_rgba(254,190,41,0.25),_rgba(77,190,158,0.3))] text-[var(--color-deep)] shadow-[0_28px_72px_rgba(26,67,56,0.12)]">
+      {/* RayBurst positioned in background with proper z-index */}
+      <RayBurst tone="secondary" size="xl" className="absolute -left-12 top-0 z-0 opacity-90 sm:-left-16 sm:top-2" />
+      {/* Content with padding to reserve space for RayBurst */}
+      <div className="relative z-10 p-6 pt-20 pl-8 sm:p-8 sm:pt-24 sm:pl-12">
+        <Reveal direction="up">
         <div className="grid gap-6 lg:grid-cols-[2fr_1fr] lg:items-center lg:gap-8">
           <div className="space-y-4 sm:space-y-6">
           <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[var(--color-primary)]/80">
@@ -33,7 +36,8 @@ export const Support = () => {
           </Link>
         </div>
         </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </div>
   );
 };

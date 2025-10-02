@@ -10,9 +10,12 @@ export const ImpactStories = () => {
   const currentStory = impactStories[storyIndex];
 
   return (
-    <div id="impact" className="relative overflow-hidden rounded-[32px] bg-white/95 p-6 shadow-[0_26px_68px_rgba(26,67,56,0.08)] ring-1 ring-black/5 sm:p-8">
-      <Reveal direction="up">
-      <RayBurst tone="accent" size="md" className="-top-8 left-6 sm:left-12" />
+    <div id="impact" className="relative overflow-hidden rounded-[32px] bg-white/95 shadow-[0_26px_68px_rgba(26,67,56,0.08)] ring-1 ring-black/5">
+      {/* RayBurst positioned in background with proper z-index */}
+      <RayBurst tone="accent" size="xl" className="absolute -top-16 left-0 z-0 opacity-90 sm:-top-20 sm:left-2" />
+      {/* Content with padding to reserve space for RayBurst */}
+      <div className="relative z-10 p-6 pt-16 pl-8 sm:p-8 sm:pt-20 sm:pl-12">
+        <Reveal direction="up">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-3 sm:space-y-4">
           <p className="text-sm font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
@@ -87,7 +90,8 @@ export const ImpactStories = () => {
           </ul>
         </div>
         </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </div>
   );
 };
