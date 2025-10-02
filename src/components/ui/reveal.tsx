@@ -3,11 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 
 const transformMap: Record<string, string> = {
-  up: "translate3d(0, 32px, 0)",
-  down: "translate3d(0, -32px, 0)",
-  left: "translate3d(32px, 0, 0)",
-  right: "translate3d(-32px, 0, 0)",
-  scale: "scale(0.95)",
+  up: "translate3d(0, 48px, 0)",
+  down: "translate3d(0, -48px, 0)",
+  left: "translate3d(48px, 0, 0)",
+  right: "translate3d(-48px, 0, 0)",
+  scale: "scale(0.92)",
+  fade: "translate3d(0, 0, 0)",
+  slideUp: "translate3d(0, 60px, 0)",
+  slideDown: "translate3d(0, -60px, 0)",
 };
 
 interface RevealProps<T extends keyof React.JSX.IntrinsicElements = "div"> {
@@ -16,6 +19,8 @@ interface RevealProps<T extends keyof React.JSX.IntrinsicElements = "div"> {
   className?: string;
   delay?: number;
   direction?: keyof typeof transformMap;
+  duration?: number;
+  threshold?: number;
 }
 
 export const Reveal = <T extends keyof React.JSX.IntrinsicElements = "div">({
@@ -24,6 +29,8 @@ export const Reveal = <T extends keyof React.JSX.IntrinsicElements = "div">({
   className = "",
   delay = 0,
   direction = "up",
+  duration = 0.8,
+  threshold = 0.1,
   ...rest
 }: RevealProps<T> & Omit<React.JSX.IntrinsicElements[T], "ref" | "children">) => {
   const Component = (as ?? "div") as React.ElementType;
@@ -43,7 +50,7 @@ export const Reveal = <T extends keyof React.JSX.IntrinsicElements = "div">({
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold }
     );
 
     observer.observe(node);
@@ -57,8 +64,7 @@ export const Reveal = <T extends keyof React.JSX.IntrinsicElements = "div">({
       ref={innerRef as React.Ref<HTMLElement>}
       className={className}
       style={{
-        transition:
-          "opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)",
+        transition: `opacity ${duration}s cubic-bezier(0.22,1,0.36,1), transform ${duration}s cubic-bezier(0.22,1,0.36,1)`,
         transitionDelay: `${delay}ms`,
         opacity: visible ? 1 : 0,
         transform: visible ? "translate3d(0,0,0)" : transform,

@@ -1,4 +1,4 @@
-import { RayBurst, Reveal } from "@/components/ui";
+import { RayBurst, Reveal, StaggerReveal } from "@/components/ui";
 import { values } from "@/data";
 
 export const Mission = () => {
@@ -20,15 +20,17 @@ export const Mission = () => {
             Children at BRUH are not defined by their diagnosis. They are welcomed into a community that recognizes their humanity, centers their emotional safety, and cultivates measurable growth across language, motor skills, social connection, and self-regulation.
           </p>
         </div>
-        <div className="mt-6 grid gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-          {values.map((value) => (
-            <div key={value.title} className="space-y-3 rounded-2xl border border-[rgba(241,91,34,0.22)] bg-white p-4 shadow-[0_14px_32px_rgba(26,67,56,0.05)] sm:space-y-4 sm:p-6">
-              <h3 className="text-sm font-semibold uppercase tracking-[0.34em] text-[var(--color-deep)]">
-                {value.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">{value.description}</p>
-            </div>
-          ))}
+        <div className="mt-6 sm:mt-8">
+          <StaggerReveal className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3" staggerDelay={150} direction="up">
+            {values.map((value) => (
+              <div key={value.title} className="space-y-3 rounded-2xl border border-[rgba(241,91,34,0.22)] bg-white p-4 shadow-[0_14px_32px_rgba(26,67,56,0.05)] sm:space-y-4 sm:p-6">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.34em] text-[var(--color-deep)]">
+                  {value.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">{value.description}</p>
+              </div>
+            ))}
+          </StaggerReveal>
         </div>
         </div>
       </Reveal>

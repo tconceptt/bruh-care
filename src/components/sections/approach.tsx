@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { RayBurst, Reveal } from "@/components/ui";
+import { RayBurst, Reveal, StaggerReveal } from "@/components/ui";
 import { focusAreas } from "@/data";
 
 export const Approach = () => {
@@ -93,16 +93,18 @@ export const Approach = () => {
       {/* Carousel Container */}
       <div className="relative">
         {/* Navigation Arrows - Positioned at the top */}
-        <div className="mb-6 flex justify-between items-center">
-          <button
-            onClick={() => setActiveIndex(Math.max(0, activeIndex - 1))}
-            disabled={activeIndex === 0}
-            className="rounded-full bg-white/90 p-3 shadow-lg transition-all hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <svg className="h-5 w-5 text-[var(--color-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
+        <StaggerReveal className="mb-6 flex justify-between items-center" staggerDelay={100} direction="up">
+          <div>
+            <button
+              onClick={() => setActiveIndex(Math.max(0, activeIndex - 1))}
+              disabled={activeIndex === 0}
+              className="rounded-full bg-white/90 p-3 shadow-lg transition-all hover:bg-white hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <svg className="h-5 w-5 text-[var(--color-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          </div>
           
           {/* Progress Indicators */}
           <div className="flex justify-center gap-2">
@@ -110,7 +112,7 @@ export const Approach = () => {
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`h-2 w-8 rounded-full transition-all duration-300 ${
+                className={`h-2 w-8 rounded-full transition-all duration-300 hover:scale-110 ${
                   index === activeIndex
                     ? "bg-[var(--color-primary)]"
                     : "bg-gray-200 hover:bg-gray-300"
@@ -119,16 +121,18 @@ export const Approach = () => {
             ))}
           </div>
           
-          <button
-            onClick={() => setActiveIndex(Math.min(focusAreas.length - 1, activeIndex + 1))}
-            disabled={activeIndex === focusAreas.length - 1}
-            className="rounded-full bg-white/90 p-3 shadow-lg transition-all hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <svg className="h-5 w-5 text-[var(--color-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
+          <div>
+            <button
+              onClick={() => setActiveIndex(Math.min(focusAreas.length - 1, activeIndex + 1))}
+              disabled={activeIndex === focusAreas.length - 1}
+              className="rounded-full bg-white/90 p-3 shadow-lg transition-all hover:bg-white hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <svg className="h-5 w-5 text-[var(--color-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </StaggerReveal>
 
         {/* Cards Container */}
         <div className="relative overflow-hidden">

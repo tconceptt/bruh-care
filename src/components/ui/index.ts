@@ -2,3 +2,8 @@ export { RayBurst } from './ray-burst';
 export { Reveal } from './reveal';
 export { Section } from './section';
 export { Container } from './container';
+export { SmoothScroll } from './smooth-scroll';
+export { Parallax } from './parallax';
+export { StaggerReveal } from './stagger-reveal';
+export { HeroReveal } from './hero-reveal';
+export { FloatingAnimation } from './floating-animation';
