@@ -4,3 +4,4 @@ export { impactStories } from './impact-stories';
 export { values } from './values';
 export { stats } from './stats';
 export { navLinks } from './navigation';
+export { immersiveImages } from './immersive-images';

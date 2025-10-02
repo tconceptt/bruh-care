@@ -72,6 +72,39 @@ body {
   * {
     -webkit-overflow-scrolling: touch;
   }
+  
+  /* Optimize images for mobile */
+  img {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Reduce motion for better performance */
+  .motion-safe\:animate-pulse {
+    animation: none;
+  }
+  
+  /* Optimize sticky positioning */
+  .sticky {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Mobile-specific optimizations for larger screens */
+@media (max-width: 768px) {
+  /* Reduce complex animations on mobile */
+  .ray-burst .ray-beam {
+    animation: none;
+  }
+  
+  /* Optimize backdrop filters for mobile */
+  .backdrop-blur-sm {
+    backdrop-filter: none;
+    background: rgba(0, 0, 0, 0.3);
+  }
 }
 
 a {

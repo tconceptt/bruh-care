@@ -7,3 +7,8 @@ export { Parallax } from './parallax';
 export { StaggerReveal } from './stagger-reveal';
 export { HeroReveal } from './hero-reveal';
 export { FloatingAnimation } from './floating-animation';
+export { ScrollZoom } from './scroll-zoom';
+export { ScrollReveal } from './scroll-reveal';
+export { ParallaxLayers } from './parallax-layers';
+export { ImageReveal } from './image-reveal';
+export { FloatingParticles } from './floating-particles';

@@ -7,3 +7,7 @@ export { FounderStory } from './founder-story';
 export { ImpactStories } from './impact-stories';
 export { Support } from './support';
 export { Footer } from './footer';
+export { ImmersiveGallery } from './immersive-gallery';
+export { CommunityGallery } from './community-gallery';
+export { LearningGallery } from './learning-gallery';
+export { DailyLifeGallery } from './daily-life-gallery';

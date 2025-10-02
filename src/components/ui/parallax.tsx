@@ -15,6 +15,10 @@ export const Parallax = ({ children, speed = 0.5, className = "" }: ParallaxProp
     const element = ref.current;
     if (!element) return;
 
+    // Disable parallax on mobile for better performance
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     const updateParallax = () => {
       const scrolled = window.pageYOffset;
       const rate = scrolled * -speed;
@@ -22,8 +26,15 @@ export const Parallax = ({ children, speed = 0.5, className = "" }: ParallaxProp
       element.style.transform = `translate3d(0, ${rate}px, 0)`;
     };
 
+    let ticking = false;
     const handleScroll = () => {
-      requestAnimationFrame(updateParallax);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateParallax();
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
