@@ -66,11 +66,14 @@ export const Lightbox = ({ images, currentIndex, isOpen, onClose, onNavigate }: 
 
   // Auto-hide controls
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      setShowControls(true);
+      return;
+    }
 
     const timer = setTimeout(() => {
       setShowControls(false);
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [isOpen, currentIndex]);
@@ -256,6 +259,7 @@ export const Lightbox = ({ images, currentIndex, isOpen, onClose, onNavigate }: 
           <div
             className="relative flex flex-1 items-center justify-center"
             onClick={handleShowControls}
+            onMouseMove={handleShowControls}
             style={{
               paddingTop: 'max(4rem, env(safe-area-inset-top))',
               paddingBottom: 'max(4rem, env(safe-area-inset-bottom))',
@@ -279,6 +283,7 @@ export const Lightbox = ({ images, currentIndex, isOpen, onClose, onNavigate }: 
                 sizes="100vw"
                 className={`max-w-full max-h-full object-${imageFit}`}
                 priority
+                unoptimized={true}
               />
               
             </motion.div>
