@@ -5,3 +5,4 @@ export { values } from './values';
 export { stats } from './stats';
 export { navLinks } from './navigation';
 export { immersiveImages } from './immersive-images';
+export { galleryImages } from './gallery-images';

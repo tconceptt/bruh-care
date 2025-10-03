@@ -4,4 +4,5 @@ export const navLinks = [
   { href: "#day", label: "Daily Life" },
   { href: "#stories", label: "Stories" },
   { href: "#support", label: "Support" },
+  { href: "/gallery", label: "Gallery" },
 ];

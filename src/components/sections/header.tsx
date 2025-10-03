@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
 import { navLinks } from "@/data";
 
@@ -23,10 +24,14 @@ const headerVariants = {
 export const Header = () => {
   const { scrollY } = useScroll();
   const shouldReduceMotion = useReducedMotion();
+  const pathname = usePathname();
   const [hidden, setHidden] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  // Check if we're on the homepage
+  const isHomePage = pathname === '/';
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -64,6 +69,16 @@ export const Header = () => {
     setIsMobileMenuOpen(false);
   };
 
+  // Helper function to get the correct href for navigation links
+  const getNavHref = (href: string) => {
+    if (href.startsWith('#')) {
+      // If we're on homepage, use hash link directly
+      // If we're on another page, navigate to homepage with hash
+      return isHomePage ? href : `/${href}`;
+    }
+    return href;
+  };
+
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -86,7 +101,7 @@ export const Header = () => {
       {/* Mobile: Always visible full header */}
       <header className={`lg:hidden fixed inset-x-0 top-0 z-50 flex justify-center ${transitionClass} ${chromeClass}`}>
         <nav className="mx-auto flex w-full max-w-[min(1280px,94vw)] items-center justify-between gap-3 px-3 py-3 sm:gap-4 sm:px-4 sm:py-4">
-          <Link href="#hero" className="flex items-center">
+          <Link href={getNavHref("#hero")} className="flex items-center">
             <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={64} height={64} className="h-16 w-16 sm:h-20 sm:w-20" />
           </Link>
           <div ref={mobileMenuRef} className="relative">
@@ -104,7 +119,7 @@ export const Header = () => {
             {isMobileMenuOpen && (
               <div className="absolute right-0 top-full mt-2 flex w-48 flex-col gap-2 rounded-2xl border border-[rgba(26,67,56,0.12)] bg-white/95 p-4 text-sm font-semibold uppercase tracking-[0.24em] text-[var(--color-deep)] shadow-[0_18px_42px_rgba(26,67,56,0.12)] sm:mt-3 sm:w-56 sm:gap-3 sm:p-5">
                 {navLinks.map((link) => (
-                  <Link key={link.href} href={link.href} className="py-1 transition hover:text-[var(--color-primary)]" onClick={handleMobileLinkClick}>
+                  <Link key={link.href} href={getNavHref(link.href)} className="py-1 transition hover:text-[var(--color-primary)]" onClick={handleMobileLinkClick}>
                     {link.label}
                   </Link>
                 ))}
@@ -131,12 +146,12 @@ export const Header = () => {
               : "lg:bg-white/30 lg:border lg:border-white/20 lg:shadow-[0_8px_24px_rgba(26,67,56,0.06)] lg:backdrop-blur-sm"
           }`}
         >
-          <Link href="#hero" className="flex items-center">
+          <Link href={getNavHref("#hero")} className="flex items-center">
             <Image src="/bruh-logo.svg" alt="BRUH Care logo" width={80} height={80} className="h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24" />
           </Link>
           <div className="hidden items-center gap-4 text-sm font-semibold uppercase tracking-[0.22em] text-[var(--text-muted)] md:gap-6 md:text-base lg:flex">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="transition hover:text-[var(--color-primary)]">
+              <Link key={link.href} href={getNavHref(link.href)} className="transition hover:text-[var(--color-primary)]">
                 {link.label}
               </Link>
             ))}

@@ -10,9 +10,7 @@ import {
   ImpactStories, 
   Support, 
   Footer, 
-  CommunityGallery,
-  LearningGallery,
-  DailyLifeGallery
+  CommunityGallery
 } from "@/components";
 import { Section, Container, Parallax } from "@/components/ui";
 
@@ -65,15 +63,11 @@ export default function Home() {
           </Container>
         </Section>
         
-        <LearningGallery />
-        
         <Section>
           <Container>
             <DailyLife />
           </Container>
         </Section>
-        
-        <DailyLifeGallery />
         
         <Section>
           <Container>

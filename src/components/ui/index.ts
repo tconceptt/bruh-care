@@ -12,3 +12,4 @@ export { ScrollReveal } from './scroll-reveal';
 export { ParallaxLayers } from './parallax-layers';
 export { ImageReveal } from './image-reveal';
 export { FloatingParticles } from './floating-particles';
+export { Lightbox } from './lightbox';

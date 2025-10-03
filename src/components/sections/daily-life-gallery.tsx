@@ -7,7 +7,7 @@ import { immersiveImages } from "@/data";
 
 // Daily life-focused images
 const dailyLifeImages = immersiveImages.filter(img => 
-  ['eating', 'drawing', 'ponder', 'laughter'].includes(img.id)
+  ['laughter'].includes(img.id)
 );
 
 const toneGradient: Record<string, string> = {

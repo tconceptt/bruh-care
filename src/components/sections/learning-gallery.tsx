@@ -7,7 +7,7 @@ import { immersiveImages } from "@/data";
 
 // Learning-focused images
 const learningImages = immersiveImages.filter(img => 
-  ['highfive', 'literacy', 'classroom', 'sensory', 'animal-cards'].includes(img.id)
+  ['highfive'].includes(img.id)
 );
 
 const toneGradient: Record<string, string> = {

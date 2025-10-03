@@ -7,8 +7,58 @@ import { immersiveImages } from "@/data";
 
 // Community-focused images
 const communityImages = immersiveImages.filter(img => 
-  ['gathering', 'playing', 'hugging', 'best-friends'].includes(img.id)
+  ['hugging', 'highfive'].includes(img.id)
 );
+
+const StigmaNarrative = () => {
+  return (
+    <div className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute inset-x-[-30%] top-0 h-[240px] rounded-[60%] bg-[radial-gradient(circle,_rgba(77,190,158,0.18),_transparent_70%)]" />
+        <div className="absolute bottom-[-20%] right-[-15%] h-[320px] w-[320px] rounded-full bg-[radial-gradient(circle,_rgba(254,190,41,0.14),_transparent_70%)]" />
+      </div>
+
+      <ScrollReveal direction="up" distance={50}>
+        <div className="mx-auto max-w-5xl px-6 sm:px-10">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.32em] text-[var(--color-primary)]">
+            Breaking the silence
+          </p>
+          <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+            <div className="space-y-5 text-base sm:text-lg leading-relaxed text-[var(--text-muted)]">
+              <h3 className="text-[clamp(2rem,5vw,3.25rem)] font-semibold text-[var(--color-deep)] leading-tight">
+                Bringing children into the light
+              </h3>
+              <p>
+                Across Ethiopia, many children with intellectual disabilities still face challenges in being fully seen and supported. Families often struggle to find guidance and opportunities that nurture their children’s growth.
+              </p>
+              <p>
+                Bruh Care offers a different path. We provide a welcoming space where children can practice communication, self-care, and social skills alongside patient coaches who understand their unique journey.
+              </p>
+              <p>
+                Here, families connect with others walking a similar path, learning practical tools, sharing progress, and discovering a community where both children and parents belong with confidence and dignity.
+              </p>
+            </div>
+
+            <aside className="relative overflow-hidden rounded-3xl bg-[var(--surface-elevated)] p-6 sm:p-8 shadow-[0_20px_60px_rgba(15,34,28,0.18)] border border-white/10">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(77,190,158,0.15),_transparent_65%)]" aria-hidden />
+              <div className="relative flex h-full flex-col justify-between gap-6">
+                <p className="text-sm uppercase tracking-[0.28em] text-[var(--color-primary)] font-semibold">
+                  A mother shares
+                </p>
+                <blockquote className="text-lg sm:text-xl font-medium text-[var(--color-deep)] leading-relaxed">
+                  “I never thought my son could find a school where he is accepted, but I found one here.”
+                </blockquote>
+                <div className="flex items-center gap-2 text-sm text-[var(--text-muted)]">
+                  <span>Parent at Bruh Care</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </ScrollReveal>
+    </div>
+  );
+};
 
 const toneGradient: Record<string, string> = {
   warm: "from-[rgba(254,190,41,0.4)] via-[rgba(254,190,41,0.1)] to-transparent",
@@ -44,6 +94,8 @@ const CommunitySlide = ({ segment, index }: { segment: (typeof communityImages)[
 
   const copyY = useSpring(useTransform(scrollYProgress, [0, 0.2, 0.6, 1], [40, 20, 0, -20]), springConfig);
 
+  const hasContent = Boolean(segment.title || segment.subtitle || segment.description);
+
   return (
     <div ref={containerRef} className="relative h-[110vh] sm:h-[110vh] md:h-[120vh]">
       <motion.article
@@ -73,53 +125,55 @@ const CommunitySlide = ({ segment, index }: { segment: (typeof communityImages)[
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
         {/* Content */}
-        <motion.div
-          className="relative mt-auto flex flex-col gap-3 p-4 pb-10 text-white sm:gap-4 sm:p-6 sm:pb-12 md:p-8 md:pb-16 md:gap-6"
-          style={{ opacity: copyOpacity, y: copyY }}
-        >
-          {/* Badge */}
-          <motion.div 
-            className="flex items-center gap-2 sm:gap-3"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
+        {hasContent && (
+          <motion.div
+            className="relative mt-auto flex flex-col gap-3 p-4 pb-10 text-white sm:gap-4 sm:p-6 sm:pb-12 md:p-8 md:pb-16 md:gap-6"
+            style={{ opacity: copyOpacity, y: copyY }}
           >
-            <span className={`inline-flex rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] ${toneBadge[segment.tone ?? "warm"]}`}>
-              BRUH
-            </span>
-            <span className="text-xs font-medium uppercase tracking-[0.24em] text-white/70 hidden sm:inline">
-              Community
-            </span>
+            {/* Badge */}
+            <motion.div 
+              className="flex items-center gap-2 sm:gap-3"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <span className={`inline-flex rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] ${toneBadge[segment.tone ?? "warm"]}`}>
+                BRUH
+              </span>
+              <span className="text-xs font-medium uppercase tracking-[0.24em] text-white/70 hidden sm:inline">
+                Community
+              </span>
+            </motion.div>
+
+            {/* Title */}
+            {segment.title && (
+              <ScrollReveal direction="up" distance={25} delay={0.3}>
+                <h3 className="text-[clamp(1.5rem,5vw,3.5rem)] font-semibold leading-tight tracking-tight">
+                  {segment.title}
+                </h3>
+              </ScrollReveal>
+            )}
+
+            {/* Subtitle */}
+            {segment.subtitle && (
+              <ScrollReveal direction="up" distance={20} delay={0.4}>
+                <p className="text-xs sm:text-sm uppercase tracking-[0.28em] sm:tracking-[0.32em] text-white/70 font-medium">
+                  {segment.subtitle}
+                </p>
+              </ScrollReveal>
+            )}
+
+            {/* Description */}
+            {segment.description && (
+              <ScrollReveal direction="up" distance={15} delay={0.5}>
+                <p className="max-w-xl text-sm sm:text-base leading-relaxed text-white/90 font-light">
+                  {segment.description}
+                </p>
+              </ScrollReveal>
+            )}
           </motion.div>
-
-          {/* Title */}
-          {segment.title && (
-            <ScrollReveal direction="up" distance={25} delay={0.3}>
-              <h3 className="text-[clamp(1.5rem,5vw,3.5rem)] font-semibold leading-tight tracking-tight">
-                {segment.title}
-              </h3>
-            </ScrollReveal>
-          )}
-
-          {/* Subtitle */}
-          {segment.subtitle && (
-            <ScrollReveal direction="up" distance={20} delay={0.4}>
-              <p className="text-xs sm:text-sm uppercase tracking-[0.28em] sm:tracking-[0.32em] text-white/70 font-medium">
-                {segment.subtitle}
-              </p>
-            </ScrollReveal>
-          )}
-
-          {/* Description */}
-          {segment.description && (
-            <ScrollReveal direction="up" distance={15} delay={0.5}>
-              <p className="max-w-xl text-sm sm:text-base leading-relaxed text-white/90 font-light">
-                {segment.description}
-              </p>
-            </ScrollReveal>
-          )}
-        </motion.div>
+        )}
       </motion.article>
     </div>
   );
@@ -159,6 +213,7 @@ export const CommunityGallery = () => {
         {communityImages.map((segment, index) => (
           <div key={segment.id}>
             <CommunitySlide segment={segment} index={index} />
+            {index === 0 && <StigmaNarrative />}
             {index < communityImages.length - 1 && (
               <div className="relative h-[12vh] sm:h-[15vh] bg-gradient-to-b from-[var(--background)] via-[var(--background)] to-[var(--background)]">
                 <FloatingParticles 

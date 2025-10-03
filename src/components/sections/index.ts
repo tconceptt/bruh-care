@@ -10,4 +10,3 @@ export { Footer } from './footer';
 export { ImmersiveGallery } from './immersive-gallery';
 export { CommunityGallery } from './community-gallery';
 export { LearningGallery } from './learning-gallery';
-export { DailyLifeGallery } from './daily-life-gallery';
