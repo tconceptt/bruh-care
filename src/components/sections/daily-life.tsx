@@ -8,7 +8,7 @@ export const DailyLife = () => {
       {/* RayBurst positioned in background with proper z-index */}
       <RayBurst tone="secondary" size="xl" className="absolute -left-12 top-0 z-0 opacity-90 sm:-left-16 sm:top-2" />
       {/* Content with padding to reserve space for RayBurst */}
-      <div className="relative z-10 p-6 pt-16 pl-8 sm:p-8 sm:pt-20 sm:pl-12">
+      <div className="relative z-10 p-6 pt-4 pl-8 sm:p-8 sm:pt-6 sm:pl-12">
         <Reveal direction="up">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="space-y-3 sm:space-y-4">

@@ -62,7 +62,7 @@ export const Lightbox = ({ images, currentIndex, isOpen, onClose, onNavigate }: 
         window.scrollTo(0, scrollY);
       }
     };
-  }, [isOpen, mounted]);
+  }, [isOpen, mounted, scrollY]);
 
   // Auto-hide controls
   useEffect(() => {
@@ -107,15 +107,6 @@ export const Lightbox = ({ images, currentIndex, isOpen, onClose, onNavigate }: 
     }
   };
 
-  const handleSwipeDown = (e: React.TouchEvent) => {
-    const startY = e.touches[0].clientY;
-    const endY = e.changedTouches[0].clientY;
-    const distance = endY - startY;
-    
-    if (distance > 100 && startY < 100) {
-      onClose();
-    }
-  };
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (!isOpen) return;

@@ -36,4 +36,33 @@ export const immersiveImages: ImmersiveImageSegment[] = [
     layout: "portrait",
     tone: "warm",
   },
+  {
+    id: "drawing",
+    image: "/images/boy-drawing.jpg",
+    alt: "Boy focused on drawing and creating art",
+    layout: "portrait",
+    title: "Creative expression",
+    description:
+      "Art becomes a language when words feel too difficult, allowing children to communicate their inner world.",
+    tone: "calm",
+  },
+  {
+    id: "mother-daughter",
+    image: "/images/mother-dropping-off-daughter.jpg",
+    alt: "Mother dropping off her daughter at the center",
+    layout: "fullscreen",
+    title: "Trust in action",
+    description:
+      "The moment when parents entrust their most precious gift to our care, knowing they'll be loved and supported.",
+    tone: "warm",
+  },
+  {
+    id: "two-girls-hugging",
+    image: "/images/two-girls-hugging.jpg",
+    alt: "Two girls hugging each other affectionately",
+    layout: "portrait",
+    description:
+      "Friendship blooms in the simplest gestures—a hug that says 'I see you, and you matter to me.'",
+    tone: "warm",
+  },
 ];

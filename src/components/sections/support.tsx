@@ -7,7 +7,7 @@ export const Support = () => {
       {/* RayBurst positioned in background with proper z-index */}
       <RayBurst tone="secondary" size="xl" className="absolute -left-12 top-0 z-0 opacity-90 sm:-left-16 sm:top-2" />
       {/* Content with padding to reserve space for RayBurst */}
-      <div className="relative z-10 p-6 pt-20 pl-8 sm:p-8 sm:pt-24 sm:pl-12">
+      <div className="relative z-10 p-6 pt-4 pl-8 sm:p-8 sm:pt-6 sm:pl-12">
         <Reveal direction="up">
         <div className="grid gap-6 lg:grid-cols-[2fr_1fr] lg:items-center lg:gap-8">
           <div className="space-y-4 sm:space-y-6">

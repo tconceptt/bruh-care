@@ -172,8 +172,8 @@ export const Approach = () => {
                     }`}
                   >
                     <Reveal>
-                      <RayBurst tone="primary" size="md" className="-top-10 left-4 sm:left-10" />
-                      <div className="relative space-y-4 sm:space-y-6">
+                      <RayBurst tone="primary" size="md" className="-top-4 left-4 sm:left-10" />
+                      <div className="relative space-y-4 sm:space-y-6 pt-4">
                         <h3 className="text-2xl font-semibold text-[var(--color-deep)] sm:text-3xl">
                           {focus.title}
                         </h3>

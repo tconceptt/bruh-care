@@ -13,10 +13,82 @@ import {
   CommunityGallery
 } from "@/components";
 import { Section, Container, Parallax } from "@/components/ui";
+import Head from "next/head";
 
 export default function Home() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "BRUH Care and Learning Center",
+    "description": "Holistic, individualized support for children with intellectual disabilities and their families. Specialized education, therapy, and community programs in a nurturing environment.",
+    "url": "https://bruhcenter.org",
+    "logo": "https://bruhcenter.org/bruh-logo.svg",
+    "image": "https://bruhcenter.org/images/og-image.jpg",
+    "telephone": "+1-XXX-XXX-XXXX", // Replace with actual phone number
+    "email": "hello@bruhcenter.org",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Your Street Address", // Replace with actual address
+      "addressLocality": "Your City",
+      "addressRegion": "Your State",
+      "postalCode": "Your ZIP Code",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.facebook.com/bruhcare",
+      "https://www.instagram.com/bruhcare",
+      "https://www.linkedin.com/company/bruhcare"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Educational and Support Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "EducationalOccupationalProgram",
+            "name": "Special Education Programs",
+            "description": "Individualized educational programs for children with intellectual disabilities"
+          }
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Therapeutic Services",
+            "description": "Speech therapy, occupational therapy, and behavioral support services"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "Family Support Services",
+            "description": "Counseling, support groups, and resources for families"
+          }
+        }
+      ]
+    },
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 0, // Replace with actual coordinates
+        "longitude": 0
+      },
+      "geoRadius": "50000" // 50km radius
+    }
+  };
+
   return (
-    <div className="relative overflow-hidden bg-[var(--background)] text-[var(--foreground)]">
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </Head>
+      <div className="relative overflow-hidden bg-[var(--background)] text-[var(--foreground)]">
       {/* Background decorative elements with parallax */}
       <Parallax speed={0.4}>
         <div
@@ -93,6 +165,7 @@ export default function Home() {
           </Container>
         </Section>
       </main>
-    </div>
+      </div>
+    </>
   );
 }

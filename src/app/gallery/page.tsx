@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { galleryImages } from "@/data";
 import { ScrollReveal, ParallaxLayers, Lightbox } from "@/components/ui";
 import { Header, Footer } from "@/components";
+import Head from "next/head";
 
 const GalleryIntro = () => {
   return (
@@ -237,8 +238,40 @@ const GalleryCTA = () => {
 };
 
 export default function GalleryPage() {
+  const galleryStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "BRUH Care Gallery",
+    "description": "Gallery showcasing moments of belonging, growth, and joy for children with intellectual disabilities and their families at BRUH Care and Learning Center",
+    "url": "https://bruhcenter.org/gallery",
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "BRUH Care and Learning Center",
+      "url": "https://bruhcenter.org"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Special needs education and support",
+      "description": "Educational and therapeutic services for children with intellectual disabilities"
+    },
+    "image": galleryImages.slice(0, 5).map(img => ({
+      "@type": "ImageObject",
+      "url": `https://bruhcenter.org${img.image}`,
+      "name": img.title || img.alt,
+      "description": img.description || img.alt,
+      "caption": img.alt
+    }))
+  };
+
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[var(--background)] text-[var(--foreground)]">
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(galleryStructuredData) }}
+        />
+      </Head>
+      <div className="relative min-h-screen overflow-hidden bg-[var(--background)] text-[var(--foreground)]">
       <Header />
       
       {/* Header spacer to prevent content from sitting under fixed header */}
@@ -251,7 +284,8 @@ export default function GalleryPage() {
         
         <Footer />
       </main>
-    </div>
+      </div>
+    </>
   );
 }
 

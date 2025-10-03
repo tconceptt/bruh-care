@@ -1,0 +1,21 @@
+{
+  "name": "BRUH Care and Learning Center",
+  "short_name": "BRUH Care",
+  "description": "Holistic, individualized support for children with intellectual disabilities and their families",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#febe29",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/bruh-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "health", "lifestyle"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

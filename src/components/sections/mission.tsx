@@ -3,12 +3,12 @@ import { values } from "@/data";
 
 export const Mission = () => {
   return (
-    <div id="mission" className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-start lg:gap-8">
+    <div id="mission" className="space-y-8 lg:space-y-12">
       <Reveal className="relative overflow-hidden rounded-[30px] bg-white/95 shadow-[0_20px_56px_rgba(26,67,56,0.08)] ring-1 ring-black/5">
         {/* RayBurst positioned in background with proper z-index */}
         <RayBurst tone="accent" size="md" className="absolute -top-8 right-4 -z-10 sm:right-8" />
         {/* Content with padding to reserve space for RayBurst */}
-        <div className="relative z-10 p-6 pt-16 pr-16 sm:p-8 sm:pt-20 sm:pr-20">
+        <div className="relative z-10 p-6 pt-4 pr-16 sm:p-8 sm:pt-6 sm:pr-20">
         <div className="space-y-4 sm:space-y-6">
           <p className="text-sm font-semibold uppercase tracking-[0.36em] text-[var(--color-primary)]">
             Why it matters
@@ -21,13 +21,13 @@ export const Mission = () => {
           </p>
         </div>
         <div className="mt-6 sm:mt-8">
-          <StaggerReveal className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3" staggerDelay={150} direction="up">
+          <StaggerReveal className="grid gap-6 sm:gap-8 lg:grid-cols-3" staggerDelay={150} direction="up">
             {values.map((value) => (
-              <div key={value.title} className="space-y-3 rounded-2xl border border-[rgba(241,91,34,0.22)] bg-white p-4 shadow-[0_14px_32px_rgba(26,67,56,0.05)] sm:space-y-4 sm:p-6">
+              <div key={value.title} className="space-y-4 rounded-2xl border border-[rgba(241,91,34,0.22)] bg-white p-6 shadow-[0_14px_32px_rgba(26,67,56,0.05)] sm:space-y-5 sm:p-8">
                 <h3 className="text-sm font-semibold uppercase tracking-[0.34em] text-[var(--color-deep)]">
                   {value.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-[var(--text-muted)] sm:text-base">{value.description}</p>
+                <p className="text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">{value.description}</p>
               </div>
             ))}
           </StaggerReveal>

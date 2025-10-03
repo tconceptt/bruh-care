@@ -91,9 +91,38 @@ export const galleryImages: GalleryImage[] = [
     image: "/images/girl-laughing.jpg",
     alt: "Girl laughing with joy",
     description:
-      "When laughter comes easily, we know the day’s work is landing exactly where it matters—in their sense of self.",
+      "When laughter comes easily, we know the day's work is landing exactly where it matters—in their sense of self.",
     tone: "warm",
     toneLabel: "Joyful",
+  },
+  {
+    id: "drawing",
+    image: "/images/boy-drawing.jpg",
+    alt: "Boy focused on drawing and creating art",
+    title: "Creative expression",
+    description:
+      "Art becomes a language when words feel too difficult, allowing children to communicate their inner world.",
+    tone: "calm",
+    toneLabel: "Artistic",
+  },
+  {
+    id: "mother-daughter",
+    image: "/images/mother-dropping-off-daughter.jpg",
+    alt: "Mother dropping off her daughter at the center",
+    title: "Trust in action",
+    description:
+      "The moment when parents entrust their most precious gift to our care, knowing they'll be loved and supported.",
+    tone: "warm",
+    toneLabel: "Trusting",
+  },
+  {
+    id: "two-girls-hugging",
+    image: "/images/two-girls-hugging.jpg",
+    alt: "Two girls hugging each other affectionately",
+    description:
+      "Friendship blooms in the simplest gestures—a hug that says 'I see you, and you matter to me.'",
+    tone: "warm",
+    toneLabel: "Affectionate",
   },
 ];
 
