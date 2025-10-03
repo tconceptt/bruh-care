@@ -58,6 +58,13 @@ export const metadata: Metadata = {
         alt: 'BRUH Care and Learning Center - Supporting children with intellectual disabilities',
         type: 'image/jpeg',
       },
+      {
+        url: '/images/og-image.jpg',
+        width: 800,
+        height: 600,
+        alt: 'BRUH Care - Children learning and growing together',
+        type: 'image/jpeg',
+      },
     ],
   },
   twitter: {
@@ -124,6 +131,10 @@ export default function RootLayout({
         <meta name="telegram:url" content="https://bruhcenter.com" />
         <meta name="telegram:domain" content="bruhcenter.com" />
         <meta name="telegram:type" content="website" />
+        {/* Telegram specific optimizations */}
+        <meta property="og:image:alt" content="BRUH Care and Learning Center - Supporting children with intellectual disabilities" />
+        <meta name="description" content="BRUH Care provides holistic, individualized support for children with intellectual disabilities and their families. Specialized education, therapy, and community programs in a nurturing environment." />
+        <meta name="keywords" content="special needs education, intellectual disabilities support, children with disabilities, special education center" />
         {/* Additional WhatsApp optimizations */}
         <meta property="og:image" content="https://bruhcenter.com/images/og-image.jpg" />
         <meta property="og:image:url" content="https://bruhcenter.com/images/og-image.jpg" />
