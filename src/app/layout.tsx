@@ -10,7 +10,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://bruhcenter.org'),
+  metadataBase: new URL('https://bruhcenter.com'),
   title: {
     default: "BRUH Care and Learning Center | Special Needs Support & Education",
     template: "%s | BRUH Care and Learning Center"
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://bruhcenter.org',
+    url: 'https://bruhcenter.com',
     siteName: 'BRUH Care and Learning Center',
     title: 'BRUH Care and Learning Center | Special Needs Support & Education',
     description: 'BRUH Care provides holistic, individualized support for children with intellectual disabilities and their families. Specialized education, therapy, and community programs in a nurturing environment.',
@@ -73,10 +73,21 @@ export const metadata: Metadata = {
     'og:image:width': '1200',
     'og:image:height': '630',
     'og:image:type': 'image/jpeg',
-    'og:image:secure_url': 'https://bruhcenter.org/images/og-image.jpg',
+    'og:image:secure_url': 'https://bruhcenter.com/images/og-image.jpg',
     'twitter:image:alt': 'BRUH Care and Learning Center - Supporting children with intellectual disabilities',
+    // WhatsApp specific optimizations
+    'og:image:url': 'https://bruhcenter.com/images/og-image.jpg',
+    'og:image': 'https://bruhcenter.com/images/og-image.jpg',
+    // Telegram specific optimizations
     'telegram:channel': '@bruhcare',
     'telegram:site': '@bruhcare',
+    'telegram:title': 'BRUH Care and Learning Center | Special Needs Support & Education',
+    'telegram:description': 'BRUH Care provides holistic, individualized support for children with intellectual disabilities and their families. Specialized education, therapy, and community programs in a nurturing environment.',
+    'telegram:image': 'https://bruhcenter.com/images/og-image.jpg',
+    'telegram:url': 'https://bruhcenter.com',
+    // Additional Telegram meta tags for better preview
+    'telegram:domain': 'bruhcenter.com',
+    'telegram:type': 'website',
   },
   icons: {
     icon: "/bruh-logo.svg",
@@ -84,8 +95,8 @@ export const metadata: Metadata = {
     apple: "/bruh-logo.svg",
   },
   manifest: '/manifest.json',
-  alternates: {
-    canonical: 'https://bruhcenter.org',
+    alternates: {
+    canonical: 'https://bruhcenter.com',
   },
   verification: {
     google: 'your-google-verification-code', // Replace with actual verification code
@@ -104,6 +115,22 @@ export default function RootLayout({
           {children}
         </SmoothScroll>
         <Analytics />
+        {/* Additional Telegram-specific meta tags */}
+        <meta name="telegram:channel" content="@bruhcare" />
+        <meta name="telegram:site" content="@bruhcare" />
+        <meta name="telegram:title" content="BRUH Care and Learning Center | Special Needs Support & Education" />
+        <meta name="telegram:description" content="BRUH Care provides holistic, individualized support for children with intellectual disabilities and their families. Specialized education, therapy, and community programs in a nurturing environment." />
+        <meta name="telegram:image" content="https://bruhcenter.com/images/og-image.jpg" />
+        <meta name="telegram:url" content="https://bruhcenter.com" />
+        <meta name="telegram:domain" content="bruhcenter.com" />
+        <meta name="telegram:type" content="website" />
+        {/* Additional WhatsApp optimizations */}
+        <meta property="og:image" content="https://bruhcenter.com/images/og-image.jpg" />
+        <meta property="og:image:url" content="https://bruhcenter.com/images/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta name="twitter:image:alt" content="BRUH Care and Learning Center - Supporting children with intellectual disabilities" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
