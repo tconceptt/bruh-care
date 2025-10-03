@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://bruhcenter.org/sitemap.xml
+Sitemap: https://bruhcenter.com/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
@@ -15,6 +15,13 @@ User-agent: Bingbot
 Allow: /
 
 User-agent: Slurp
+Allow: /
+
+# Allow Telegram bot for link previews
+User-agent: TelegramBot
+Allow: /
+
+User-agent: TelegramBot (like TwitterBot)
 Allow: /
 
 # Block access to admin or private areas (if any)
