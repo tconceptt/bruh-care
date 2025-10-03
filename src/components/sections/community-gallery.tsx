@@ -80,11 +80,8 @@ const CommunitySlide = ({ segment, index }: { segment: (typeof communityImages)[
     offset: ["start end", "end start"],
   });
 
-  // Optimize spring physics for mobile
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const springConfig = isMobile 
-    ? { stiffness: 50, damping: 25, restDelta: 0.01 }
-    : { stiffness: 100, damping: 30, restDelta: 0.001 };
+  // Optimize spring physics for mobile - use consistent config to avoid hydration mismatch
+  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
 
   const scale = useSpring(useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1.15, 1, 1, 0.95]), springConfig);
 

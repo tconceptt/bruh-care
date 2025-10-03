@@ -17,6 +17,13 @@ const lengthMap: Record<NonNullable<RayBurstProps["size"]>, number> = {
   xl: 128,
 };
 
+const sizeClassMap: Record<NonNullable<RayBurstProps["size"]>, string> = {
+  sm: "h-14 w-14",
+  md: "h-20 w-20", 
+  lg: "h-28 w-28",
+  xl: "h-40 w-40",
+};
+
 export const RayBurst = ({
   tone = "secondary",
   size = "md",
@@ -28,9 +35,7 @@ export const RayBurst = ({
 
   return (
     <div
-      className={`ray-burst pointer-events-none relative flex items-end justify-center ${
-        size === "xl" ? "h-40 w-40" : size === "lg" ? "h-28 w-28" : size === "md" ? "h-20 w-20" : "h-14 w-14"
-      } ${className}`}
+      className={`ray-burst pointer-events-none relative flex items-end justify-center ${sizeClassMap[size]} ${className}`}
     >
       {angles.map((angle, index) => (
         <span

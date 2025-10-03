@@ -56,6 +56,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: 'BRUH Care and Learning Center - Supporting children with intellectual disabilities',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -64,6 +65,18 @@ export const metadata: Metadata = {
     title: 'BRUH Care and Learning Center | Special Needs Support & Education',
     description: 'Holistic, individualized support for children with intellectual disabilities and their families.',
     images: ['/images/og-image.jpg'],
+    site: '@bruhcare',
+    creator: '@bruhcare',
+  },
+  // Additional meta tags for better social media sharing
+  other: {
+    'og:image:width': '1200',
+    'og:image:height': '630',
+    'og:image:type': 'image/jpeg',
+    'og:image:secure_url': 'https://bruhcenter.org/images/og-image.jpg',
+    'twitter:image:alt': 'BRUH Care and Learning Center - Supporting children with intellectual disabilities',
+    'telegram:channel': '@bruhcare',
+    'telegram:site': '@bruhcare',
   },
   icons: {
     icon: "/bruh-logo.svg",
