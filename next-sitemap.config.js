@@ -7,18 +7,41 @@ module.exports = {
   priority: 0.7,
   sitemapSize: 5000,
   exclude: ['/test-og/*'],
-  additionalPaths: async (config) => [
-    await config.transform(config, '/gallery'),
-  ],
+  transform: async (config, path) => {
+    // Set higher priority for homepage
+    if (path === '/') {
+      return {
+        loc: path,
+        lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+        changefreq: 'weekly',
+        priority: 1.0,
+      }
+    }
+    
+    // Set medium priority for gallery
+    if (path === '/gallery') {
+      return {
+        loc: path,
+        lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+        changefreq: 'monthly',
+        priority: 0.8,
+      }
+    }
+    
+    // Default for other pages
+    return {
+      loc: path,
+      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+      changefreq: config.changefreq,
+      priority: config.priority,
+    }
+  },
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         allow: '/',
       },
-    ],
-    additionalSitemaps: [
-      'https://bruhcenter.com/sitemap.xml',
     ],
   },
 }
