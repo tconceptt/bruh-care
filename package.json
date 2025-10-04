@@ -4,15 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "next build --turbopack && next-sitemap",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
     "framer-motion": "^12.23.22",
     "lenis": "^1.3.11",
     "next": "15.5.4",
+    "next-sitemap": "^4.2.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
