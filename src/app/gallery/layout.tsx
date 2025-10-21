@@ -16,7 +16,7 @@ export const metadata = {
   openGraph: {
     title: "Gallery | BRUH Care and Learning Center",
     description: "Explore the full gallery of BRUH Care—moments of belonging, growth, and joy for children with intellectual disabilities and their families.",
-    url: "https://bruhcenter.org/gallery",
+    url: "https://bruhcenter.com/gallery",
     images: [
       {
         url: "/images/gallery-og.jpg",
@@ -33,7 +33,7 @@ export const metadata = {
     images: ['/images/gallery-og.jpg'],
   },
   alternates: {
-    canonical: 'https://bruhcenter.org/gallery',
+    canonical: 'https://bruhcenter.com/gallery',
   },
 };
 

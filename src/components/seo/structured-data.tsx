@@ -5,23 +5,18 @@ export const OrganizationStructuredData = {
   "@type": "EducationalOrganization",
   "name": "BRUH Care and Learning Center",
   "description": "Holistic, individualized support for children with intellectual disabilities and their families. Specialized education, therapy, and community programs in a nurturing environment.",
-  "url": "https://bruhcenter.org",
-  "logo": "https://bruhcenter.org/bruh-logo.svg",
-  "image": "https://bruhcenter.org/images/og-image.jpg",
-  "telephone": "+1-XXX-XXX-XXXX", // Replace with actual phone number
-  "email": "hello@bruhcenter.org",
+  "url": "https://bruhcenter.com",
+  "logo": "https://bruhcenter.com/bruh-logo.svg",
+  "image": "https://bruhcenter.com/images/og-image.jpg",
+  "telephone": "+251911186118",
+  "email": "Bruhmrc@gmail.com",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Your Street Address", // Replace with actual address
-    "addressLocality": "Your City",
-    "addressRegion": "Your State", 
-    "postalCode": "Your ZIP Code",
-    "addressCountry": "US"
+    "addressLocality": "Addis Ababa",
+    "addressCountry": "ET"
   },
   "sameAs": [
-    "https://www.facebook.com/bruhcare",
-    "https://www.instagram.com/bruhcare",
-    "https://www.linkedin.com/company/bruhcare"
+    "https://www.instagram.com/bruhcenter21"
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -69,11 +64,11 @@ export const GalleryStructuredData = {
   "@type": "ImageGallery",
   "name": "BRUH Care Gallery",
   "description": "Gallery showcasing moments of belonging, growth, and joy for children with intellectual disabilities and their families at BRUH Care and Learning Center",
-  "url": "https://bruhcenter.org/gallery",
+  "url": "https://bruhcenter.com/gallery",
   "publisher": {
     "@type": "EducationalOrganization",
     "name": "BRUH Care and Learning Center",
-    "url": "https://bruhcenter.org"
+    "url": "https://bruhcenter.com"
   },
   "about": {
     "@type": "Thing",
@@ -82,7 +77,7 @@ export const GalleryStructuredData = {
   },
   "image": galleryImages.slice(0, 5).map(img => ({
     "@type": "ImageObject",
-    "url": `https://bruhcenter.org${img.image}`,
+    "url": `https://bruhcenter.com${img.image}`,
     "name": img.title || img.alt,
     "description": img.description || img.alt,
     "caption": img.alt
@@ -112,3 +107,4 @@ export const FAQStructuredData = (faqs: Array<{question: string, answer: string}
     }
   }))
 });
+

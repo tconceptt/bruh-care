@@ -20,7 +20,7 @@ export const DailyLife = () => {
           </h2>
         </div>
         <Link
-          href="mailto:visit@bruhcenter.org"
+          href="mailto:Bruhmrc@gmail.com?subject=Visit Request"
           className="inline-flex items-center justify-center rounded-full border border-[var(--color-accent)]/70 bg-[rgba(77,190,158,0.15)] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-deep)] shadow-[0_12px_28px_rgba(77,190,158,0.22)] transition hover:bg-[rgba(77,190,158,0.25)] sm:px-6 sm:text-base"
         >
           Schedule a visit

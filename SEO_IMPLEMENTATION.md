@@ -43,7 +43,7 @@
 ## 🔧 Configuration Required
 
 ### Update These Placeholders:
-1. **Domain**: Replace `bruhcenter.org` with actual domain
+1. **Domain**: Replace `bruhcenter.com` with actual domain
 2. **Contact Information**:
    - Phone number: `+1-XXX-XXX-XXXX`
    - Address: Complete postal address
@@ -114,3 +114,4 @@ Tools to set up:
 - Mobile-Friendly Test
 
 This implementation provides a solid foundation for SEO success, targeting the special needs education and disability support market with comprehensive technical and content optimization.
+

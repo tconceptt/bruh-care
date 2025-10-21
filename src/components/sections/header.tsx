@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
 import { navLinks } from "@/data";
+import { DonationPopup } from "@/components/ui";
 
 const headerVariants = {
   visible: {
@@ -28,6 +29,7 @@ export const Header = () => {
   const [hidden, setHidden] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDonationPopupOpen, setIsDonationPopupOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // Check if we're on the homepage
@@ -123,9 +125,15 @@ export const Header = () => {
                     {link.label}
                   </Link>
                 ))}
-                <Link href="mailto:hello@bruhcenter.org" className="mt-1.5 inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-3 py-1.5 text-xs text-white" onClick={handleMobileLinkClick}>
-                  Connect
-                </Link>
+                <button 
+                  onClick={() => {
+                    setIsDonationPopupOpen(true);
+                    handleMobileLinkClick();
+                  }} 
+                  className="mt-1.5 inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-3 py-1.5 text-xs text-white"
+                >
+                  Donate
+                </button>
               </div>
             )}
           </div>
@@ -156,14 +164,19 @@ export const Header = () => {
               </Link>
             ))}
           </div>
-          <Link
-            href="mailto:hello@bruhcenter.org"
+          <button
+            onClick={() => setIsDonationPopupOpen(true)}
             className="rounded-full bg-[var(--color-primary)] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.24em] text-white shadow-[0_8px_20px_rgba(241,91,34,0.2)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(241,91,34,0.25)] md:px-4 md:py-2 md:text-sm"
           >
-            Connect
-          </Link>
+            Donate
+          </button>
         </nav>
       </motion.header>
+      
+      <DonationPopup 
+        isOpen={isDonationPopupOpen} 
+        onClose={() => setIsDonationPopupOpen(false)} 
+      />
     </>
   );
 };

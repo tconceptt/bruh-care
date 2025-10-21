@@ -6,6 +6,7 @@ export { DailyLife } from './daily-life';
 export { FounderStory } from './founder-story';
 export { ImpactStories } from './impact-stories';
 export { Support } from './support';
+export { Location } from './location';
 export { Footer } from './footer';
 export { BeautifulGallery } from './beautiful-gallery';
 export { CommunityGallery } from './community-gallery';

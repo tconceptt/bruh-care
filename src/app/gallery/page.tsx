@@ -219,7 +219,7 @@ const GalleryCTA = () => {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] sm:gap-4 sm:text-sm">
             <Link
-              href="mailto:hello@bruhcenter.org"
+              href="mailto:Bruhmrc@gmail.com"
               className="inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-5 py-2.5 text-white transition hover:-translate-y-0.5 sm:px-6 sm:py-3"
             >
               Contact the team
@@ -243,11 +243,11 @@ export default function GalleryPage() {
     "@type": "ImageGallery",
     "name": "BRUH Care Gallery",
     "description": "Gallery showcasing moments of belonging, growth, and joy for children with intellectual disabilities and their families at BRUH Care and Learning Center",
-    "url": "https://bruhcenter.org/gallery",
+    "url": "https://bruhcenter.com/gallery",
     "publisher": {
       "@type": "EducationalOrganization",
       "name": "BRUH Care and Learning Center",
-      "url": "https://bruhcenter.org"
+      "url": "https://bruhcenter.com"
     },
     "about": {
       "@type": "Thing",
@@ -256,7 +256,7 @@ export default function GalleryPage() {
     },
     "image": galleryImages.slice(0, 5).map(img => ({
       "@type": "ImageObject",
-      "url": `https://bruhcenter.org${img.image}`,
+      "url": `https://bruhcenter.com${img.image}`,
       "name": img.title || img.alt,
       "description": img.description || img.alt,
       "caption": img.alt

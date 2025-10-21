@@ -9,6 +9,7 @@ import {
   FounderStory, 
   ImpactStories, 
   Support, 
+  Location,
   Footer, 
   CommunityGallery
 } from "@/components";
@@ -21,23 +22,18 @@ export default function Home() {
     "@type": "EducationalOrganization",
     "name": "BRUH Care and Learning Center",
     "description": "Holistic, individualized support for children with intellectual disabilities and their families. Specialized education, therapy, and community programs in a nurturing environment.",
-    "url": "https://bruhcenter.org",
-    "logo": "https://bruhcenter.org/bruh-logo.svg",
-    "image": "https://bruhcenter.org/images/og-image.jpg",
-    "telephone": "+1-XXX-XXX-XXXX", // Replace with actual phone number
-    "email": "hello@bruhcenter.org",
+    "url": "https://bruhcenter.com",
+    "logo": "https://bruhcenter.com/bruh-logo.svg",
+    "image": "https://bruhcenter.com/images/og-image.jpg",
+    "telephone": "+251911186118",
+    "email": "Bruhmrc@gmail.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Your Street Address", // Replace with actual address
-      "addressLocality": "Your City",
-      "addressRegion": "Your State",
-      "postalCode": "Your ZIP Code",
-      "addressCountry": "US"
+      "addressLocality": "Addis Ababa",
+      "addressCountry": "ET"
     },
     "sameAs": [
-      "https://www.facebook.com/bruhcare",
-      "https://www.instagram.com/bruhcare",
-      "https://www.linkedin.com/company/bruhcare"
+      "https://www.instagram.com/bruhcenter21"
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -156,6 +152,12 @@ export default function Home() {
         <Section>
           <Container>
             <Support />
+          </Container>
+        </Section>
+        
+        <Section>
+          <Container>
+            <Location />
           </Container>
         </Section>
         

@@ -23,13 +23,13 @@ export const Support = () => {
         </div>
           <div className="flex flex-col gap-4 sm:gap-6">
           <Link
-            href="mailto:partner@bruhcenter.org"
+            href="mailto:Bruhmrc@gmail.com?subject=Partnership Inquiry"
             className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-deep)] shadow-[0_18px_42px_rgba(26,67,56,0.15)] transition hover:-translate-y-0.5 sm:px-6 sm:py-3 sm:text-sm"
           >
             Explore partnerships
           </Link>
           <Link
-            href="tel:+251911000000"
+            href="tel:+251911186118"
             className="inline-flex items-center justify-center rounded-full border border-[var(--color-deep)]/30 bg-white/70 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-deep)] transition hover:border-[var(--color-deep)]/60 sm:px-6 sm:py-3 sm:text-sm"
           >
             Speak with our team

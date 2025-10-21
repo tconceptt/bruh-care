@@ -1,9 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Reveal, Parallax, StaggerReveal, HeroReveal, FloatingAnimation } from "@/components/ui";
+import { useState } from "react";
+import { Reveal, Parallax, StaggerReveal, HeroReveal, FloatingAnimation, DonationPopup } from "@/components/ui";
 import { stats } from "@/data";
 
 export const Hero = () => {
+  const [isDonationPopupOpen, setIsDonationPopupOpen] = useState(false);
+
   return (
     <div id="hero" className="relative overflow-hidden rounded-[28px] bg-transparent">
       <div className="absolute inset-0 -z-10 rounded-[28px] bg-white/95 shadow-[0_18px_56px_rgba(26,67,56,0.08)] backdrop-blur">
@@ -23,12 +26,12 @@ export const Hero = () => {
             </p>
           </HeroReveal>
           <HeroReveal className="flex flex-col gap-4 sm:flex-row sm:gap-6" delay={200} direction="scale">
-            <Link
-              href="mailto:hello@bruhcenter.org"
+            <button
+              onClick={() => setIsDonationPopupOpen(true)}
               className="inline-flex items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-base font-semibold uppercase tracking-[0.24em] text-white shadow-[0_18px_42px_rgba(241,91,34,0.3)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(241,91,34,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-primary)] sm:px-7"
             >
-              Connect
-            </Link>
+              Donate
+            </button>
             <Link
               href="#mission"
               className="inline-flex items-center justify-center rounded-full border border-[var(--color-primary)]/30 bg-white px-6 py-3 text-base font-semibold uppercase tracking-[0.24em] text-[var(--color-deep)] shadow-[0_12px_28px_rgba(26,67,56,0.06)] transition hover:border-[var(--color-primary)]/60 hover:text-[var(--color-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-primary)] sm:px-7"
@@ -83,6 +86,11 @@ export const Hero = () => {
           </HeroReveal>
         </HeroReveal>
       </div>
+      
+      <DonationPopup 
+        isOpen={isDonationPopupOpen} 
+        onClose={() => setIsDonationPopupOpen(false)} 
+      />
     </div>
   );
 };

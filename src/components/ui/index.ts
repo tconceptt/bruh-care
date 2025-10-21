@@ -13,3 +13,4 @@ export { ParallaxLayers } from './parallax-layers';
 export { ImageReveal } from './image-reveal';
 export { FloatingParticles } from './floating-particles';
 export { Lightbox } from './lightbox';
+export { DonationPopup } from './donation-popup';
