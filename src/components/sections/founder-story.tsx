@@ -11,7 +11,7 @@ export const FounderStory = () => {
           From humble beginnings to a trusted refuge
         </h2>
         <p className="text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
-          When a partner organization closed in 2008, families who had finally brought their children out of hiding were left without options. Ms. Nardos Assefa used personal funds to keep doors open, determined that progress wouldn&apos;t disappear overnight. That decision sparked BRUH—built on courage, community, and the belief that every child is worthy of opportunity.
+          When Concern, where the founder had initially worked, closed in 2008, families who had finally brought their children out of hiding were left without options. Ms. Nardos Assefa used personal funds to keep doors open, determined that progress wouldn&apos;t disappear overnight. That decision sparked BRUH—built on courage, community, and the belief that every child is worthy of opportunity.
         </p>
         <p className="text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
           Today, the center remains rooted in that same conviction: to stand beside families who are navigating intellectual disabilities with limited resources, and to ensure their children are embraced with patience, respect, and love.
