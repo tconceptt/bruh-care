@@ -15,7 +15,7 @@ const donationOptions = [
     name: 'CBE Mobile Banking',
     logo: '/cbe-logo.svg',
     accountNumber: '1000252358898',
-    accountHolder: 'Edget Wsnenet Maekel',
+    accountHolder: 'Biruh Yeaymro edget wsnenet maekel',
     description: 'Commercial Bank of Ethiopia'
   },
   {
